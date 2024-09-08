@@ -26,10 +26,10 @@ display_menu
 
 case $choice in
     1)
-        # Windows Server 2016
-        img_file="windows2016.img"
-        iso_link="https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso?_gl=1*1bz1efi*_gcl_au*MTg4MzEwMDAwNC4xNzI1NjcyNjk1&_ga=2.109894470.2132767608.1725672693-1766161693.1725672693"
-        iso_file="windows2016.iso"
+        # Windows Server 7 ,10,11
+        img_file="windows71011.img"
+        iso_link="https://www.mediafire.com/file/4hbszqfx3wo9fgd/7-10-11-windows.iso/file?dkey=vc5z66it4ql&r=706"
+        iso_file="windows71011.iso"
         ;;
     2)
         # Windows Server 2019
