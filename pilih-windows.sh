@@ -28,7 +28,7 @@ case $choice in
     1)
         # Windows Server 7 ,10,11
         img_file="windows71011.img"
-        iso_link="https://www.mediafire.com/file/4hbszqfx3wo9fgd/7-10-11-windows.iso/file?dkey=vc5z66it4ql&r=706"
+        iso_link="https://download938.mediafire.com/prkympr0rvigvxM0V6IfB6ImoqyagN5RueBRjJFHAVggKejSztQ3OLlXLh6RE1SWWRResO3Qr0wDVU-wCwKbXaOHaPbJrJ7FnKIL7Gh9B4OblkhbQm108hysbTjbi3ReOuOce-QLk0xqA5P7EhhjEbEAVasVd98qJA9PzHaKdFOk/4hbszqfx3wo9fgd/7-10-11-windows.iso"
         iso_file="windows71011.iso"
         ;;
     2)
