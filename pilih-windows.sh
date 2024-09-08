@@ -28,7 +28,7 @@ case $choice in
     1)
         # Windows Server 2016
         img_file="windows2016.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195174&clcid=0x409&culture=en-us&country=US"
+        iso_link="https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-desktop-amd64.iso?_gl=1*1bz1efi*_gcl_au*MTg4MzEwMDAwNC4xNzI1NjcyNjk1&_ga=2.109894470.2132767608.1725672693-1766161693.1725672693"
         iso_file="windows2016.iso"
         ;;
     2)
