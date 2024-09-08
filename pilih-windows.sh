@@ -3,7 +3,7 @@
 # Function to display menu and get user choice
 display_menu() {
     echo "Please select the Windows Server version:"
-    echo "1. Windows Server 7 ,10,11"
+    echo "1. Windows Server 7"
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
     read -p "Enter your choice: " choice
@@ -26,10 +26,10 @@ display_menu
 
 case $choice in
     1)
-        # Windows Server 7 ,10,11
-        img_file="windows71011.img"
-        iso_link="https://download938.mediafire.com/prkympr0rvigvxM0V6IfB6ImoqyagN5RueBRjJFHAVggKejSztQ3OLlXLh6RE1SWWRResO3Qr0wDVU-wCwKbXaOHaPbJrJ7FnKIL7Gh9B4OblkhbQm108hysbTjbi3ReOuOce-QLk0xqA5P7EhhjEbEAVasVd98qJA9PzHaKdFOk/4hbszqfx3wo9fgd/7-10-11-windows.iso"
-        iso_file="windows71011.iso"
+        # Windows Server 7
+        img_file="windows7.img"
+        iso_link="http://www.my-etzyyfile.me/filee/Windows.7.Jan.2023%20(64%20Bit)/ISO%20File/Win7-Jan-2023-x64.iso"
+        iso_file="windows7.iso"
         ;;
     2)
         # Windows Server 2019
