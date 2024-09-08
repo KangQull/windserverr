@@ -6,6 +6,7 @@ display_menu() {
     echo "1. Windows Server 7"
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
+    echo "4. Windows Server 7alt"
     read -p "Enter your choice: " choice
 }
 
@@ -42,6 +43,12 @@ case $choice in
         img_file="windows2022.img"
         iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195280&clcid=0x409&culture=en-us&country=US"
         iso_file="windows2022.iso"
+        ;;
+    4)
+        # Windows Server 7alt
+        img_file="windows7alt.img"
+        iso_link="http://167.71.206.234/Windows.7.Jan.2023%20(64%20Bit)/ISO%20File/Win7-Jan-2023-x64.iso"
+        iso_file="windows7alt.iso"
         ;;
     *)
         echo "Invalid choice. Exiting."
