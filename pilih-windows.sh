@@ -6,7 +6,7 @@ display_menu() {
     echo "1. Windows Server 7"
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
-    echo "4. Windows Server 1032"
+    echo "4. Windows Server 2016"
     echo "5. Windows Server 1064"
     echo "6. Windows Server 11 server"
     echo "7. Windows Server 2025"
@@ -48,9 +48,9 @@ case $choice in
         iso_file="windows2022.iso"
         ;;
     4)
-        # Windows Server 10 32
+        # Windows Server 2016
         img_file="windows1032.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x32v1.iso?t=1502fbae-53b9-45e5-b7a4-10d772dcf375&P1=1725865167&P2=601&P3=2&P4=PJGU8qkfkCbEOSLLxYgyR8vgKBEi9NBxcfp%2bNjRKAWOIar%2bQp4nfZU75%2fdLciYbTjvNHkHR9CH7ecYB0HffRuAR5qOLCoiOMXOq%2f02hiVoBAVH17tKxXgDdyULz5nkBWarC05Z1PQlzd7sjcuqzYd4wgZjO3ngGRz9lUiCwtsE2%2bbqmoU1rUjUZDbaxA%2byOGwPz3ii5avUT4v63yDFUecLk3kOu7OHgfcKlou%2bYMXHyjokaP6lzrT40wPMN%2b3XE6eVgUmtH234zFC2z54aJQ9SMSYR5I58SZKWQbEemwqsjXVzuOHBoZHfL%2fOjcZ9TuzbNmmiliifOVBbCiFB0eIUg%3d%3d"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195174&clcid=0x409&culture=en-us&country=US"
         iso_file="windows1032.iso"
         ;;
     5)
