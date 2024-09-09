@@ -6,8 +6,8 @@ display_menu() {
     echo "1. Windows Server 7"
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
-    echo "4. Windows Server 10_32bit"
-    echo "5. Windows Server 10_64bit"
+    echo "4. Windows Server 1032"
+    echo "5. Windows Server 1064"
     read -p "Enter your choice: " choice
 }
 
@@ -46,13 +46,13 @@ case $choice in
         iso_file="windows2022.iso"
         ;;
     4)
-        # Windows Server 10_32
+        # Windows Server 10 32
         img_file="windows1032.img"
         iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x32v1.iso?t=1502fbae-53b9-45e5-b7a4-10d772dcf375&P1=1725865167&P2=601&P3=2&P4=PJGU8qkfkCbEOSLLxYgyR8vgKBEi9NBxcfp%2bNjRKAWOIar%2bQp4nfZU75%2fdLciYbTjvNHkHR9CH7ecYB0HffRuAR5qOLCoiOMXOq%2f02hiVoBAVH17tKxXgDdyULz5nkBWarC05Z1PQlzd7sjcuqzYd4wgZjO3ngGRz9lUiCwtsE2%2bbqmoU1rUjUZDbaxA%2byOGwPz3ii5avUT4v63yDFUecLk3kOu7OHgfcKlou%2bYMXHyjokaP6lzrT40wPMN%2b3XE6eVgUmtH234zFC2z54aJQ9SMSYR5I58SZKWQbEemwqsjXVzuOHBoZHfL%2fOjcZ9TuzbNmmiliifOVBbCiFB0eIUg%3d%3d"
         iso_file="windows1032"
         ;;
     5)
-        # Windows Server 10_64
+        # Windows Server 10 64
         img_file="windows1064.img"
         iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=dec9a883-4ccc-4c04-8a61-e74281fcf502&P1=1725865362&P2=601&P3=2&P4=oByLA1ECLPczPM4NurCSr7VTNNt610Pkj6CrdPRPPmvEGjLb6w4556qOj%2bZhsxeX0AHQKwU%2bLCFHpgpWjtF8lCg1qGz93MKZ%2fqcaaK%2f30M5%2fk7d1NNQX9f8LQaCGDpl%2b7REWZ8X6dHFOyawqql9P8%2bxO6OEoZosn%2faKOa%2bBjcW3pY1IMWmXfENxhRkohCnhmUzT8NnxTgD1cJkzQiW2J24zQ%2bhBNowJ1VWQ08sH3yHZR2bN94fr%2fPWPfpr6S4bUzN3xSOXOeP2Vkfxon3KxYg%2b5UFBk9sBLFmo5m32KbY07RChNlX2ffSi2AbI2jKUrt5oQxHJH%2bTy0sEnCFTRShvA%3d%3d"
         iso_file="windows1064"
