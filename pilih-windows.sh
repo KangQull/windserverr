@@ -7,7 +7,7 @@ display_menu() {
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
     echo "4. Windows Server 10_32bit"
-    echo "5. Windows Server 10_64bit
+    echo "5. Windows Server 10_64bit"
     read -p "Enter your choice: " choice
 }
 
