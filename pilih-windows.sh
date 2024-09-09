@@ -8,6 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 1032"
     echo "5. Windows Server 1064"
+    echo "6. Windows Server 11"
     read -p "Enter your choice: " choice
 }
 
@@ -56,6 +57,12 @@ case $choice in
         img_file="windows1064.img"
         iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=dec9a883-4ccc-4c04-8a61-e74281fcf502&P1=1725865362&P2=601&P3=2&P4=oByLA1ECLPczPM4NurCSr7VTNNt610Pkj6CrdPRPPmvEGjLb6w4556qOj%2bZhsxeX0AHQKwU%2bLCFHpgpWjtF8lCg1qGz93MKZ%2fqcaaK%2f30M5%2fk7d1NNQX9f8LQaCGDpl%2b7REWZ8X6dHFOyawqql9P8%2bxO6OEoZosn%2faKOa%2bBjcW3pY1IMWmXfENxhRkohCnhmUzT8NnxTgD1cJkzQiW2J24zQ%2bhBNowJ1VWQ08sH3yHZR2bN94fr%2fPWPfpr6S4bUzN3xSOXOeP2Vkfxon3KxYg%2b5UFBk9sBLFmo5m32KbY07RChNlX2ffSi2AbI2jKUrt5oQxHJH%2bTy0sEnCFTRShvA%3d%3d"
         iso_file="windows1064.iso"
+        ;;
+    6)
+        # Windows Server 11
+        img_file="windows11.img"
+        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=6a407720-1eea-4a6b-a66e-f64a304e550b&P1=1725869072&P2=601&P3=2&P4=IDlqRumtMaTXpABVxCkGz6Eet3jFHDbbBFm9ULi57zktJG5oTu5KdVj7hWrSIKo%2fWaW1NjySlLQUOINO1ikBjwMX42%2fGP6ksF%2f9oKoAjlW9JgX%2fQwd7QHvhosKNyABn4p5cUomoR8Yk4uMld2TO%2fdMh8rBA8f88HHx1cniDsfMmTVgeBsasZ3if2L9tftM0pJW4rE9AX1rpcwT7k%2bCykTwpd%2b1TD%2fwHb4YmT9cFYiH9LqXlR0qjpFVTVzyfLz4NsWHOnM4jZxJUIeSWMqAXGSxLBeuW%2bzwrH2xnCLAtX8M9hhgNYkuXgVZM1yz%2fCxRODgGhnODF3IsuR%2fFih3duQpg%3d%3d"
+        iso_file="windows11.iso"
         ;;
     *)
         echo "Invalid choice. Exiting."
