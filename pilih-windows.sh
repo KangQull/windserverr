@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 1032"
     echo "5. Windows Server 1064"
-    echo "6. Windows Server 11"
+    echo "6. Windows Server 11 server"
     read -p "Enter your choice: " choice
 }
 
@@ -31,7 +31,7 @@ case $choice in
     1)
         # Windows Server 7
         img_file="windows7.img"
-        iso_link="http://167.71.206.234/windows764.iso"
+        iso_link="https://archive.org/download/windows-7-and-windows-server-2008-r2-service-pack-1/Win7SP1.iso"
         iso_file="windows7.iso"
         ;;
     2)
@@ -59,9 +59,9 @@ case $choice in
         iso_file="windows1064.iso"
         ;;
     6)
-        # Windows Server 11
+        # Windows Server 11 server
         img_file="windows11.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=6a407720-1eea-4a6b-a66e-f64a304e550b&P1=1725869072&P2=601&P3=2&P4=IDlqRumtMaTXpABVxCkGz6Eet3jFHDbbBFm9ULi57zktJG5oTu5KdVj7hWrSIKo%2fWaW1NjySlLQUOINO1ikBjwMX42%2fGP6ksF%2f9oKoAjlW9JgX%2fQwd7QHvhosKNyABn4p5cUomoR8Yk4uMld2TO%2fdMh8rBA8f88HHx1cniDsfMmTVgeBsasZ3if2L9tftM0pJW4rE9AX1rpcwT7k%2bCykTwpd%2b1TD%2fwHb4YmT9cFYiH9LqXlR0qjpFVTVzyfLz4NsWHOnM4jZxJUIeSWMqAXGSxLBeuW%2bzwrH2xnCLAtX8M9hhgNYkuXgVZM1yz%2fCxRODgGhnODF3IsuR%2fFih3duQpg%3d%3d"
+        iso_link="https://archive.org/download/windows-home-server-2011_202102/Windows%20Home%20Server%202011.iso"
         iso_file="windows11.iso"
         ;;
     *)
