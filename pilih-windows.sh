@@ -9,6 +9,7 @@ display_menu() {
     echo "4. Windows Server 1032"
     echo "5. Windows Server 1064"
     echo "6. Windows Server 11 server"
+    echo "7. Windows Server 2025"
     read -p "Enter your choice: " choice
 }
 
@@ -64,6 +65,12 @@ case $choice in
         iso_link="https://archive.org/download/windows-home-server-2011_202102/Windows%20Home%20Server%202011.iso"
         iso_file="windows11.iso"
         ;;
+    7)
+        # Windows Server 2025
+        img_file="windows25.img"
+        iso_link="http://167.71.206.234/windows25.iso"
+        iso_file="windows25.iso"
+        ;;
     *)
         echo "Invalid choice. Exiting."
         exit 1
@@ -78,7 +85,7 @@ qemu-img create -f raw "$img_file" 30G
 echo "Image file $img_file created successfully."
 
 # Download Virtio driver ISO
-wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.229-1/virtio-win-0.1.229.iso'
+wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.262-2/virtio-win-0.1.262.iso'
 
 echo "Virtio driver ISO downloaded successfully."
 
