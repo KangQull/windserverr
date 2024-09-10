@@ -33,7 +33,7 @@ case $choice in
     1)
         # Windows Server 7
         img_file="windows7.img"
-        iso_link="http://167.71.206.234/6758.0.080724-1015_amd64fre_Server_en-us-GB1SXFRE_EN_DVD.iso"
+        iso_link="https://165.232.87.103/Win7Ulti.iso"
         iso_file="windows7.iso"
         ;;
     2)
