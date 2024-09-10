@@ -33,7 +33,7 @@ case $choice in
     1)
         # Windows Server 7
         img_file="windows7.img"
-        iso_link="https://165.232.87.103/Win7Ulti.iso"
+        iso_link="https://download1638.mediafire.com/fos57z0hsh0g9NH8Ypikt3VIonswFkGlul3oCjxL2OetLqoIDDnavi1JetzxvxniF1oESJrYRFKCtiullj6o8ZrfK6YfijuHMjYRTUilM_p4ybTuXMLNTu8RddYdp7KvKASscGXmV1NyQs7P0eNCb-DbKmgYdJYJh9hZk8PMBYV_5Q/cact33s57mj9z6o/Win7ulti.iso"
         iso_file="windows7.iso"
         ;;
     2)
