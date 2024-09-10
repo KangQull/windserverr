@@ -7,7 +7,7 @@ display_menu() {
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
-    echo "5. Windows Server 1064"
+    echo "5. Ubuntu 20.04 LTS"
     echo "6. Windows Server 11 server"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
@@ -55,10 +55,10 @@ case $choice in
         iso_file="windows1032.iso"
         ;;
     5)
-        # Windows Server 10 64
-        img_file="windows1064.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=dec9a883-4ccc-4c04-8a61-e74281fcf502&P1=1725865362&P2=601&P3=2&P4=oByLA1ECLPczPM4NurCSr7VTNNt610Pkj6CrdPRPPmvEGjLb6w4556qOj%2bZhsxeX0AHQKwU%2bLCFHpgpWjtF8lCg1qGz93MKZ%2fqcaaK%2f30M5%2fk7d1NNQX9f8LQaCGDpl%2b7REWZ8X6dHFOyawqql9P8%2bxO6OEoZosn%2faKOa%2bBjcW3pY1IMWmXfENxhRkohCnhmUzT8NnxTgD1cJkzQiW2J24zQ%2bhBNowJ1VWQ08sH3yHZR2bN94fr%2fPWPfpr6S4bUzN3xSOXOeP2Vkfxon3KxYg%2b5UFBk9sBLFmo5m32KbY07RChNlX2ffSi2AbI2jKUrt5oQxHJH%2bTy0sEnCFTRShvA%3d%3d"
-        iso_file="windows1064.iso"
+        # Ubuntu 20.04 LTS
+        img_file="ubuntu20.img"
+        iso_link="https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso?_gl=1*50ct44*_gcl_au*MTg4MzEwMDAwNC4xNzI1NjcyNjk1&_ga=2.76210837.1225971289.1725983090-1766161693.1725672693"
+        iso_file="ubuntu20.iso"
         ;;
     6)
         # Windows Server 11 server
