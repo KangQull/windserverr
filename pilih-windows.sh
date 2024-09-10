@@ -10,6 +10,7 @@ display_menu() {
     echo "5. Windows Server 1064"
     echo "6. Windows Server 11 server"
     echo "7. Windows Server 2025"
+    echo "8. Windows Server 12 R2"
     read -p "Enter your choice: " choice
 }
 
@@ -70,6 +71,12 @@ case $choice in
         img_file="windows25.img"
         iso_link="http://167.71.206.234/windows25.iso"
         iso_file="windows25.iso"
+        ;;
+    8)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
         ;;
     *)
         echo "Invalid choice. Exiting."
