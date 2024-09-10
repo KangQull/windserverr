@@ -50,9 +50,9 @@ case $choice in
         ;;
     4)
         # Windows Server 2016
-        img_file="windows1032.img"
+        img_file="windows16.img"
         iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195174&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows1032.iso"
+        iso_file="windows16.iso"
         ;;
     5)
         # Ubuntu 20.04 LTS
