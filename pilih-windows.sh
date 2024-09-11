@@ -101,7 +101,7 @@ case $choice in
     11)
         # Windows 10 eterpres
         img_file="windows10.img"
-        iso_link="https://files.dog/MSDN/Windows%2010/en-gb_windows_10_enterprise_2015_ltsb_n_x64_dvd_6848318.iso"
+        iso_link="https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_arm64.iso"
         iso_file="windows10.iso"
         ;;
     12)
