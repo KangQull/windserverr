@@ -11,6 +11,14 @@ display_menu() {
     echo "6. Windows Server 11"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
+    echo "9. Windows 8.1"
+    echo "10. Windows 7 exterpres"
+    echo "11. Windows 10 eterpres"
+    echo "12. Windows 8 pro"
+    echo "14. Windows"
+    echo "15. Windows"
+    echo "16. Windows"
+    echo "17. Windows"
     read -p "Enter your choice: " choice
 }
 
@@ -73,6 +81,60 @@ case $choice in
         iso_file="windows25.iso"
         ;;
     8)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
+        ;;
+    9)
+        # Windows 8.1
+        img_file="windows8.img"
+        iso_link="https://dl.bobpony.com/windows/8.x/8.1/en_windows_8.1_with_update_x64_dvd_6051480.iso"
+        iso_file="windows8.iso"
+        ;;
+    10)
+        # Windows 7 eterpres
+        img_file="windows7e.img"
+        iso_link="https://dl.bobpony.com/windows/7/en_windows_7_enterprise_n_with_sp1_x64_dvd_u_677704.iso"
+        iso_file="windows7e.iso"
+        ;;
+    11)
+        # Windows 10 eterpres
+        img_file="windows10.img"
+        iso_link="https://files.dog/MSDN/Windows%2010/en-gb_windows_10_enterprise_2015_ltsb_n_x64_dvd_6848318.iso"
+        iso_file="windows10.iso"
+        ;;
+    12)
+        # Windows 8 pro
+        img_file="windows8p.img"
+        iso_link="https://files.dog/MSDN/Windows%208/en-gb_windows_8_pro_n_vl_x64_dvd_918679.iso"
+        iso_file="windows8p.iso"
+        ;;
+    13)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
+        ;;
+    14)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
+        ;;
+    15)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
+        ;;
+    16)
+        # Windows Server 2012 R2
+        img_file="windows12.img"
+        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+        iso_file="windows12.iso"
+        ;;
+    17)
         # Windows Server 2012 R2
         img_file="windows12.img"
         iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
