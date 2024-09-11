@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
     echo "5. Ubuntu 20.04 LTS"
-    echo "6. Windows Server 8"
+    echo "6. Windows Server 11"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
     read -p "Enter your choice: " choice
@@ -61,10 +61,10 @@ case $choice in
         iso_file="ubuntu20.iso"
         ;;
     6)
-        # Windows Server 8
-        img_file="windows8.img"
-        iso_link="https://archive.org/download/Win8.1_English_x64/Win8.1_English_x64.iso"
-        iso_file="windows8.iso"
+        # Windows Server 11
+        img_file="windows11.img"
+        iso_link="https://dl.bobpony.com/windows/11/en_windows_11_x64.ISO"
+        iso_file="windows11.iso"
         ;;
     7)
         # Windows Server 2025
