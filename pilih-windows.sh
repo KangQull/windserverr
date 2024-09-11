@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
     echo "5. Ubuntu 20.04 LTS"
-    echo "6. Windows Server 11"
+    echo "6. Windows Server 8"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
     read -p "Enter your choice: " choice
@@ -61,10 +61,10 @@ case $choice in
         iso_file="ubuntu20.iso"
         ;;
     6)
-        # Windows Server 11
-        img_file="windows11.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=fb1e3ff3-c3c3-46ec-bd3c-d502fbe713b3&P1=1726030870&P2=601&P3=2&P4=B6hOeYZKnNOwd7x05NiT6MovlSlYwCStH9MmcWpC6BJTXFfVdL3VUM80SwjhRfssQMmcJqoMjo1eC9HgxwhMPRjyYPYsUXjTGjvIt3UNfE9AkJu%2b%2f2IvmmBoy0tJAIf5bDAt4wri7uwXNfoSnaS5mghIij3jKYZsfpbsqkrKBGleXYlrvPkC%2bxpEzhTMk%2bAp0WZX8IhFIRstiaYtN4w4ahXTx%2fIrFjOVvXbOSdLauFjaOT9hhAcwSCjhipyLKabeRp3bg2yel7nXBU7LbkfVpwsJftpsKgtnh392pEOz9sUgyRtS2y88OPsjfIQWSpg8bCDI6lfc7mkQkCpqW%2bfATQ%3d%3d"
-        iso_file="windows11.iso"
+        # Windows Server 8
+        img_file="windows8.img"
+        iso_link="https://archive.org/download/Win8.1_English_x64/Win8.1_English_x64.iso"
+        iso_file="windows8.iso"
         ;;
     7)
         # Windows Server 2025
