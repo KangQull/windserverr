@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://dl.bobpony.com/windows/11/en_windows_11_x64.ISO"
+        iso_link="https://dl.bobpony.com/windows/11/26100.1.240331-1435.ge_release_CLIENT_ENTERPRISES_OEM_A64FRE_en-us.iso"
         iso_file="windows11.iso"
         ;;
     7)
