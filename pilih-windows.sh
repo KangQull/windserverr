@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
     echo "5. Ubuntu 20.04 LTS"
-    echo "6. Windows Server 11 server"
+    echo "6. Windows Server 11"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
     read -p "Enter your choice: " choice
@@ -61,9 +61,9 @@ case $choice in
         iso_file="ubuntu20.iso"
         ;;
     6)
-        # Windows Server 11 server
+        # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://archive.org/download/windows-home-server-2011_202102/Windows%20Home%20Server%202011.iso"
+        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=fb1e3ff3-c3c3-46ec-bd3c-d502fbe713b3&P1=1726030870&P2=601&P3=2&P4=B6hOeYZKnNOwd7x05NiT6MovlSlYwCStH9MmcWpC6BJTXFfVdL3VUM80SwjhRfssQMmcJqoMjo1eC9HgxwhMPRjyYPYsUXjTGjvIt3UNfE9AkJu%2b%2f2IvmmBoy0tJAIf5bDAt4wri7uwXNfoSnaS5mghIij3jKYZsfpbsqkrKBGleXYlrvPkC%2bxpEzhTMk%2bAp0WZX8IhFIRstiaYtN4w4ahXTx%2fIrFjOVvXbOSdLauFjaOT9hhAcwSCjhipyLKabeRp3bg2yel7nXBU7LbkfVpwsJftpsKgtnh392pEOz9sUgyRtS2y88OPsjfIQWSpg8bCDI6lfc7mkQkCpqW%2bfATQ%3d%3d"
         iso_file="windows11.iso"
         ;;
     7)
@@ -92,7 +92,7 @@ qemu-img create -f raw "$img_file" 30G
 echo "Image file $img_file created successfully."
 
 # Download Virtio driver ISO
-wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.173-1/virtio-win-0.1.173.iso'
+wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.215-1/virtio-win-0.1.215.iso'
 
 echo "Virtio driver ISO downloaded successfully."
 
