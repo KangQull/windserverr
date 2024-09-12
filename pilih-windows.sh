@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=c8da7b54-f83d-48e7-902a-bf6c693a554d&P1=1726158557&P2=601&P3=2&P4=GIXf%2fssdm67v0BFg6PSS%2bnlfW5daT9HXF62Q00NXFTghJsJhk%2bINBYnQxgg4WMK0AhSLwCl%2fVuGiuTHC4zKRt9Chg7W7TS8V4Moe%2fq7wwvGzkFIlzRaG2hrKer%2foI4iyZHsDx30T9Pxg7MaRwM37%2f4UVDgxXJiJDa%2fqXuDSAT5XqNpYFt6J3OgcBKoQmgf5NvrJFhoxKsvmevaaekOchG68Cxuf5Fw5sVU2470AJADAcZ2Ew%2fcoEW6WxhEdG%2b6Zlb9p%2bLGx6H5UN5mImG9%2fpZJX1u9QScETZCjBIJQjXYkVI6YwOmCj2Mqps6yFooM4Ow73srE5rTOZQVRINbKjPdQ%3d%3d"
+        iso_link="https://dw.uptodown.net/dwn/Gax1dTQd4moaGBwFyBwLIDZG2PolkHcuAcnoAaJg-2rmekZVRCMR1gy8r-8dC7fAiUYA7YYjrrAoLP3mKP63Y57wQo_06hhjG2IuLSHkMM86IX-LsOq1zaS-o2ObSxhU/obdCKiAET9nXVwjzpCwHs-_Ek6jvoe1OgmuXfmmb4nPXMizgu2-GhM3LiCEfNwBrM_8FPQWi3XRG_qrkTar789RJ4vPev394BbXDIv_yDDvCt8a1FbCxHEEl6SEp3-ja/nbJkgmjelHXJw2-XH1CCBkBPVYJJri26DgUXf-Ybg1IixPCqy6ktbemanJeMy0ckaFuoPlEwyOb2qmxGVowx5g==/windows-11-23h2.iso"
         iso_file="windows11.iso"
         ;;
     7)
