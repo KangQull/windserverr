@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://dl.bobpony.com/windows/11/26100.1.240331-1435.ge_release_CLIENT_ENTERPRISES_OEM_A64FRE_en-us.iso"
+        iso_link="https://software.download.prss.microsoft.com/dbazure/Win11_23H2_English_x64v2.iso?t=c8da7b54-f83d-48e7-902a-bf6c693a554d&P1=1726158557&P2=601&P3=2&P4=GIXf%2fssdm67v0BFg6PSS%2bnlfW5daT9HXF62Q00NXFTghJsJhk%2bINBYnQxgg4WMK0AhSLwCl%2fVuGiuTHC4zKRt9Chg7W7TS8V4Moe%2fq7wwvGzkFIlzRaG2hrKer%2foI4iyZHsDx30T9Pxg7MaRwM37%2f4UVDgxXJiJDa%2fqXuDSAT5XqNpYFt6J3OgcBKoQmgf5NvrJFhoxKsvmevaaekOchG68Cxuf5Fw5sVU2470AJADAcZ2Ew%2fcoEW6WxhEdG%2b6Zlb9p%2bLGx6H5UN5mImG9%2fpZJX1u9QScETZCjBIJQjXYkVI6YwOmCj2Mqps6yFooM4Ow73srE5rTOZQVRINbKjPdQ%3d%3d"
         iso_file="windows11.iso"
         ;;
     7)
@@ -154,7 +154,7 @@ qemu-img create -f raw "$img_file" 30G
 echo "Image file $img_file created successfully."
 
 # Download Virtio driver ISO
-wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.262-2/virtio-win.iso'
+wget -O virtio-win.iso 'https://github.com/qemus/virtiso/releases/download/v0.1.262-2/virtio-win-0.1.262.iso'
 
 echo "Virtio driver ISO downloaded successfully."
 
