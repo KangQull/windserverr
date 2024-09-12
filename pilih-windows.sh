@@ -101,7 +101,7 @@ case $choice in
     11)
         # Windows 10 eterpres
         img_file="windows10.img"
-        iso_link="https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_arm64.iso"
+        iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=5581c45e-35e6-45a5-8648-d942b6f0ae62&P1=1726159579&P2=601&P3=2&P4=kA1mLTJm%2b0lq1VcobDSGD3obKv4JGx%2bpotiKNxOZ3C5mOeNb1lePCmmZ6jH1byxKCgyUA1Mzb92HkFkp%2fv4II0QFjXmbYZDhj5evk%2bkn3%2bekzzPHBn2emipYOCQxevLMUB68F2k2%2b9RacqQ0zixYXqcrq9w5p%2flMtiPvcPwYx%2bBK4Uzq5wiNhWPT4BQM2tr8G%2buj9UM6TC3thv1d4vbsYs5YQwvK9CHwIh6P7irVShDXucpUvDydPBznk%2fq1fiX4MQ%2fc8FlBaErBmo8oj7gWZnEkbjwzKw%2fsAgYgQsrvLaqt91sid746hWbPRcvm8RFx4EEUWWPuebHheyIKdl2zjA%3d%3d"
         iso_file="windows10.iso"
         ;;
     12)
