@@ -119,7 +119,7 @@ case $choice in
     14)
         # Windows X 10p
         img_file="windows10x.img"
-        iso_link="https://k9ipsw.bn.files.1drv.com/y4mJRw3LvhPohx51-Fdtils2R0LdBsBFLxqssOZMKYNzHUL8NyLYTe4KDgBoGSn3eAL2DQpm991hzbn7y_TYhDFx7cRaiSfVV_4mlimiMf4UtWodytBMjxdS0r1_aXT7hkwA0a15VC7aaO2y2urVyrTMTOtufxnEcqFagtFN5E2E92Ftsl6xEhENvIoKf16GfTM_oxTtcAAexsh2lxBOdbY5w"
+        iso_link="https://ul5otw.bn.files.1drv.com/y4makayrxygzT7a4OduYecFmghiqd4wL5RJjXPpf9A6-uqK_fP5ME2TCF4lufM0iQRg7AXOUpQb91h7ZqxlCo6UcHLQoZ2kHMHaUlS7wspm36qkw7Kmy9B90kFaXXvyLF8uXer6fgWV7UG6RQYVsTp9fQeL9k9wshM7QXWiOCE9uHLwmRaDO8fhR9sv_SI_r5ovdouz7Dq2UPG6yPjRa-QBtQ"
         iso_file="windows10x.iso"
         ;;
     15)
