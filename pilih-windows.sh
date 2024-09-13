@@ -13,7 +13,7 @@ display_menu() {
     echo "8. Windows Server 12 R2"
     echo "9. Windows 8.1"
     echo "10. Windows 7 exterpres"
-    echo "11. Windows 10 eterpres"
+    echo "11. Windows 10 lite"
     echo "12. Windows 8 pro"
     echo "14. Windows"
     echo "15. Windows"
@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://dl.bobpony.com/windows/11/26100.1.240331-1435.ge_release_CLIENT_ENTERPRISES_OEM_x64FRE_en-us.iso"
+        iso_link="https://download1324.mediafire.com/q82b4g566mtgTx7q_TLPfJOtioNF91punW4XW8nDuTzm4dVknw-uXCUmvbasVb7y3OjwUr2Bz7PnXfhtg0Czdov-xZcgOLHvmn0HS4d-oH0DRZiyBDfUm8lned8X5Y_N3AANfHdDZj1EhTHjQOsP9F1ImUvK2BzhMRI031avQ_W3p8wu/aisvgelvpjj1gul/WIN11.PRO.22H2.U18.X64.%28WPE%2B%29.ISO"
         iso_file="windows11.iso"
         ;;
     7)
@@ -101,7 +101,7 @@ case $choice in
     11)
         # Windows 10 eterpres
         img_file="windows10.img"
-        iso_link="https://dw.uptodown.net/dwn/2co4wZ0ZCVYyTAWeJgUDFdRNon5DQhYRKNEYdf8Gfknc0G9vR0_OXOw0e9wONv3haoewUhU2XxyDx2QkHrWtmMnY-MZJ9uIJbJpG4zz8pb-J_wLQezyT4Z4VsUAUCpGq/zErV83FlubDMY_V8DDYiELE0p05TJKpAU2guP_9mHWf14NHGfIildu7dKa3rxKhKM6sE_-8MFapY82RLRoSnyRfMW1LPz0I3IE4_DPR1zBvzugBem66crMu5atYgfVKs/KvS2b8SsfsM0MuDDXUd7onmapBuiGlH5QKgK4PygjScLkTM0CPay8739ZlXgTszdZErhTdALKCZiuzr0V0IOaEqMnWVzgpavbY5Ij-lLD1E=/windows-10-22h2-build-19041.iso"
+        iso_link="https://download1322.mediafire.com/p7ogpsuhh3ugjF5fYWk3qJu2Je6_eHqBfJ6YMrfHMcGxBg46MPiCcxeKSRe6pCJ2Vi9_xXD4gaf18IYbVW3ZG9QnOEIYXG3QSJTSzpcU6_Ccw4f3zfspvgIr6QUHwVNVO2GIKm3p6h4eBIBKBnlIQ_fHD1m92WaI_RtiXpeAfIuCQUao/4q64m77dxys54kf/WIN10.PRO.AIO.U18.X64.%28WPE%29.ISO"
         iso_file="windows10.iso"
         ;;
     12)
