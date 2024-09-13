@@ -15,7 +15,7 @@ display_menu() {
     echo "10. Windows 7 exterpres"
     echo "11. Windows 10 lite"
     echo "12. Windows 8 pro"
-    echo "14. Windows"
+    echo "13. Windows 11 ori"
     echo "15. Windows"
     echo "16. Windows"
     echo "17. Windows"
@@ -111,10 +111,10 @@ case $choice in
         iso_file="windows8p.iso"
         ;;
     13)
-        # Windows Server 2012 R2
-        img_file="windows12.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows12.iso"
+        # Windows 11 Ori
+        img_file="windows11o.img"
+        iso_link="https://dw.uptodown.net/dwn/f24hxBdOwETVh-G7PDQEsTsDRJd1fwaN7-18HRTT3pwRc-hNySv0dDvxqLOvrvg_TVju56w0L9-uWU9gJrip1Fm3uX6x9RQfSaYvyPaoztKKnfK61giip03BzN1wPRda/Np42oo2cwoIlMcz9nR3elYboWXM36yhU3GEMv86amy-6FHYjnLW6vjFjMaYFmvxtXGH-axT-KDZBn9JnThWddK4jDr1Y4545_f2C1-S2zu4XWaOe4l42_1Jo0c3yCodA/MwMevOt-L1JIctdesITg9S36n9Nn0kHhTWwtIKYq2ghqBElbVHne0Jrjp0Ft15N7OprWOLgRtyABcvCTHxq0jQ==/windows-11-23h2.iso"
+        iso_file="windows11o.iso"
         ;;
     14)
         # Windows Server 2012 R2
