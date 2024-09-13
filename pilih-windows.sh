@@ -16,8 +16,8 @@ display_menu() {
     echo "11. Windows 10 lite"
     echo "12. Windows 8 pro"
     echo "13. Windows 11 ori"
-    echo "15. Windows"
-    echo "16. Windows"
+    echo "14. Windows X 10p"
+    echo "15. Windows X 11p"
     echo "17. Windows"
     read -p "Enter your choice: " choice
 }
@@ -117,16 +117,16 @@ case $choice in
         iso_file="windows11o.iso"
         ;;
     14)
-        # Windows Server 2012 R2
-        img_file="windows12.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows12.iso"
+        # Windows X 10p
+        img_file="windows10x.img"
+        iso_link="https://k9ipsw.bn.files.1drv.com/y4mJRw3LvhPohx51-Fdtils2R0LdBsBFLxqssOZMKYNzHUL8NyLYTe4KDgBoGSn3eAL2DQpm991hzbn7y_TYhDFx7cRaiSfVV_4mlimiMf4UtWodytBMjxdS0r1_aXT7hkwA0a15VC7aaO2y2urVyrTMTOtufxnEcqFagtFN5E2E92Ftsl6xEhENvIoKf16GfTM_oxTtcAAexsh2lxBOdbY5w"
+        iso_file="windows10x.iso"
         ;;
     15)
-        # Windows Server 2012 R2
-        img_file="windows12.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows12.iso"
+        # Windows X 11p
+        img_file="windows11x.img"
+        iso_link="https://ul4frq.bn.files.1drv.com/y4mb-YTRfdwaH9BCI2nJ1E1X4qh0kj700oWVD8dAltRYcYtpBL2cch6d4oVBEwgA2jifB3EwfzPx9i6B47LR-9mwEQeQYqNUIQWhuXAou0pyXSKjjpTAvc9WUTmPsnWQn9JMsG1zrBMQY9DjmKf-jAhv4whgHaOONdQHYQm88mvj4VoXFYxYAGADHajUzQbsAgmrr8kYoQo6aZ6JwW7sO_WTw"
+        iso_file="windows11x.iso"
         ;;
     16)
         # Windows Server 2012 R2
