@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://dw.uptodown.net/dwn/Gax1dTQd4moaGBwFyBwLIDZG2PolkHcuAcnoAaJg-2rmekZVRCMR1gy8r-8dC7fAiUYA7YYjrrAoLP3mKP63Y57wQo_06hhjG2IuLSHkMM86IX-LsOq1zaS-o2ObSxhU/obdCKiAET9nXVwjzpCwHs-_Ek6jvoe1OgmuXfmmb4nPXMizgu2-GhM3LiCEfNwBrM_8FPQWi3XRG_qrkTar789RJ4vPev394BbXDIv_yDDvCt8a1FbCxHEEl6SEp3-ja/nbJkgmjelHXJw2-XH1CCBkBPVYJJri26DgUXf-Ybg1IixPCqy6ktbemanJeMy0ckaFuoPlEwyOb2qmxGVowx5g==/windows-11-23h2.iso"
+        iso_link="https://dl.bobpony.com/windows/11/26100.1.240331-1435.ge_release_CLIENT_ENTERPRISES_OEM_x64FRE_en-us.iso"
         iso_file="windows11.iso"
         ;;
     7)
