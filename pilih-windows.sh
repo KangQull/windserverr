@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
     echo "5. Ubuntu 20.04 LTS"
-    echo "6. Windows Server 11"
+    echo "6. Windows Server 11 spectre"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
     echo "9. Windows 8.1"
@@ -71,7 +71,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11.img"
-        iso_link="https://download1324.mediafire.com/q82b4g566mtgTx7q_TLPfJOtioNF91punW4XW8nDuTzm4dVknw-uXCUmvbasVb7y3OjwUr2Bz7PnXfhtg0Czdov-xZcgOLHvmn0HS4d-oH0DRZiyBDfUm8lned8X5Y_N3AANfHdDZj1EhTHjQOsP9F1ImUvK2BzhMRI031avQ_W3p8wu/aisvgelvpjj1gul/WIN11.PRO.22H2.U18.X64.%28WPE%2B%29.ISO"
+        iso_link="https://hurwtg.bn.files.1drv.com/y4mTEP_uQ46DejA7zpa6_hKyqscouzJBnBIiaHN4SYq9Glsjq8TIdty2JCrojobEhKLEtY7yGwO-rWe8sXQoabsxIfb6oDeDd6Bwq0e_M46HATz12CiXGcFf5ILfMdTBuTnxtL25Var4haquCTUJo8yLOr6b_9lPogARqSua8rgGC3YvrhaEvmaZsR2s-xkymeHxoWFGntzIZCOYZh2X9At8w"
         iso_file="windows11.iso"
         ;;
     7)
