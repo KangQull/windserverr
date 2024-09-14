@@ -18,7 +18,7 @@ display_menu() {
     echo "13. Windows 11 ori"
     echo "14. Windows X 10p"
     echo "15. Windows X 11p"
-    echo "17. Windows"
+    echo "16. Windows 10 GSpectre"
     read -p "Enter your choice: " choice
 }
 
@@ -129,10 +129,10 @@ case $choice in
         iso_file="windows11x.iso"
         ;;
     16)
-        # Windows Server 2012 R2
-        img_file="windows12.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows12.iso"
+        # Windows 10 Gspectre
+        img_file="windows10g.img"
+        iso_link="https://k9hgqq.bn.files.1drv.com/y4mtQLmXYLvL-yujjCo7Hefsa04aHwvzvcOadeHbfjsHmr9cPUnHmdxpnIsUw9MRsYh-fgGO4sXpRA3JjIzePQR-fs2N78zC1ukN5EfpPHOT2-aJNoyEuUMER36yWfeZ4s2nmBpT7CBchYICuzi9Vplue4BnZZGgAq_SwA8wcnVrtEV0bJsDwcsWlgjIYiuaL6nKyuKxRKWpuhxATv3V-sHkQ"
+        iso_file="windows10g.iso"
         ;;
     17)
         # Windows Server 2012 R2
