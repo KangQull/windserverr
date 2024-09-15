@@ -131,7 +131,7 @@ case $choice in
     16)
         # Windows 10 Gspectre
         img_file="windows10g.img"
-        iso_link="https://k9hgqq.bn.files.1drv.com/y4mtQLmXYLvL-yujjCo7Hefsa04aHwvzvcOadeHbfjsHmr9cPUnHmdxpnIsUw9MRsYh-fgGO4sXpRA3JjIzePQR-fs2N78zC1ukN5EfpPHOT2-aJNoyEuUMER36yWfeZ4s2nmBpT7CBchYICuzi9Vplue4BnZZGgAq_SwA8wcnVrtEV0bJsDwcsWlgjIYiuaL6nKyuKxRKWpuhxATv3V-sHkQ"
+        iso_link="https://huomoa.bn.files.1drv.com/y4mtGBM-s1PbBztI5PmktheWzxjlRI7fOu3zQMgzkjgc3lCKFy565T9Za_XoMVvhxx0sdZf2NtXAaLotyNmHLun6mCpYDJtTlpx2UjOvENJUvABujulL1JeExfPy0Cowgdo-d09ql__xa-dq6YHmxWPVTyR317c3SxUiTUeZR2CaLL8pAZcN9ZLoNKjRcdjpQvodqWLN3mPlbv1jIOWrIFT_g"
         iso_file="windows10g.iso"
         ;;
     17)
@@ -154,7 +154,7 @@ qemu-img create -f raw "$img_file" 30G
 echo "Image file $img_file created successfully."
 
 # Download Virtio driver ISO
-wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.262-2/virtio-win.iso'
+wget -O virtio-win.iso 'https://github.com/qemus/virtiso/releases/download/v0.1.262-2/virtio-win-0.1.262.iso'
 
 echo "Virtio driver ISO downloaded successfully."
 
