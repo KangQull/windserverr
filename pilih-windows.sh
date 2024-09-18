@@ -113,7 +113,7 @@ case $choice in
     13)
         # Windows 11 Ori
         img_file="windows11o.img"
-        iso_link="https://dw.uptodown.net/dwn/f24hxBdOwETVh-G7PDQEsTsDRJd1fwaN7-18HRTT3pwRc-hNySv0dDvxqLOvrvg_TVju56w0L9-uWU9gJrip1Fm3uX6x9RQfSaYvyPaoztKKnfK61giip03BzN1wPRda/Np42oo2cwoIlMcz9nR3elYboWXM36yhU3GEMv86amy-6FHYjnLW6vjFjMaYFmvxtXGH-axT-KDZBn9JnThWddK4jDr1Y4545_f2C1-S2zu4XWaOe4l42_1Jo0c3yCodA/MwMevOt-L1JIctdesITg9S36n9Nn0kHhTWwtIKYq2ghqBElbVHne0Jrjp0Ft15N7OprWOLgRtyABcvCTHxq0jQ==/windows-11-23h2.iso"
+        iso_link="https://dw.uptodown.net/dwn/sOdSQjwMIUmj5fJuDYtFZQykF-erAvyGWS92Ef6EgaMNuSJTYs1ha2oTcJBLsiLiru26J7YTZf4VIhK1uVdeo9sVdhOG9C5AfcNMZrn6V0xI4HfRd6Nj81Nld5Xo13Ic/tvlEdYez7K_0BB5CZbxfIqKyzziZVY7Uh8bdHQNCRzxYMtwxlSaQR0KUn_C_0JALfbryS5jJtdDiVJ19ULmOxe5J1V8G0cS3ED24xCoMGNJEtqiszeFRLLZiIMrwUjsN/tRyauoVxeG4LQwOT6ubUtQGNdxKBzCuVUa_EPLGvNxde7ESegdFBvCiq4Cj4xpM36N6qgd7-T90FPbC5AoJL4g==/windows-11-23h2.iso"
         iso_file="windows11o.iso"
         ;;
     14)
