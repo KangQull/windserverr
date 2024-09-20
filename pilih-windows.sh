@@ -3,7 +3,7 @@
 # Function to display menu and get user choice
 display_menu() {
     echo "Please select the Windows Server version:"
-    echo "1. Windows Server 7"
+    echo "1. Windows Server 7 home"
     echo "2. Windows Server 2019"
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
@@ -19,6 +19,8 @@ display_menu() {
     echo "14. Windows X 10p"
     echo "15. Windows X 11p"
     echo "16. Windows 10 GSpectre"
+    echo "17. Windows XP"
+    echo "18. Windows VISTA"
     read -p "Enter your choice: " choice
 }
 
@@ -41,7 +43,7 @@ case $choice in
     1)
         # Windows Server 7
         img_file="windows7.img"
-        iso_link="https://download1638.mediafire.com/fos57z0hsh0g9NH8Ypikt3VIonswFkGlul3oCjxL2OetLqoIDDnavi1JetzxvxniF1oESJrYRFKCtiullj6o8ZrfK6YfijuHMjYRTUilM_p4ybTuXMLNTu8RddYdp7KvKASscGXmV1NyQs7P0eNCb-DbKmgYdJYJh9hZk8PMBYV_5Q/cact33s57mj9z6o/Win7ulti.iso"
+        iso_link="https://kgncwg.bn.files.1drv.com/y4mToQDALHZT52rpHRg2gQ4PtpZEIZkQp5NRS6LRxkyZgbc1j93UW5f2bV6fc2aMEBdGFKgu-P52LXvzyGPQGgP8HjQQEt-o_YGUtEp_wAivK60usJ5fF8vqQmJiYuLJIE5H7j5ti7O-0sibJH1Cc5SEnJ5xC83W1GxWpVh_gfetnkshNFIwoojynoLmImAufxtNYVR8RtxQ0offiPOVbjnOw"
         iso_file="windows7.iso"
         ;;
     2)
@@ -135,10 +137,16 @@ case $choice in
         iso_file="windows10g.iso"
         ;;
     17)
-        # Windows Server 2012 R2
-        img_file="windows12.img"
-        iso_link="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
-        iso_file="windows12.iso"
+        # Windows XP
+        img_file="windowsxp.img"
+        iso_link="https://kgolza.bn.files.1drv.com/y4mC-CSQVVATJnaYBM13IP0vUES5OnQEN6MfVMjTywuYm_enrlDHR-DOv02P0zya6sFjMJfggcTkjy0Sq40B-_lIGDZBySDTls2go9xods4hfgtZEwLirotQzKYAxyBMw36ATqjzUBknd7CDPhRClVNHDSfdyTxaKLXQLxtekhKQpT2InBMuiLKzeCsC42hzKWRudT8PgoeRdAr2G0lx6SVkg"
+        iso_file="windowsxp.iso"
+        ;;
+    18)
+        # Windows VISTA
+        img_file="windowsv.img"
+        iso_link="https://9e7ceg.bn.files.1drv.com/y4mVw2srZ5Y-KtBnsG_JIQ7hcLHZFTaD7DSbEcL5fke3Mc55YRJr-AuVNkTTrtYOTT6ABhZN5egNmj-yQFnY20rGQJVAMsG2eOllWO5I0OMOy6IXE2lkqx0BXMi4IuKSF_AK34eGUakug0oCbwd2-6QOqAa-Ns9_7gssN3Z6qHs3vKOcoAYzbFdrBIUyHWYBEC_HHgAxiL_xnKxQKxQFOJeOQ"
+        iso_file="windowsv.iso"
         ;;
     *)
         echo "Invalid choice. Exiting."
