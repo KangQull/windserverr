@@ -115,7 +115,7 @@ case $choice in
     13)
         # Windows 11 Ori
         img_file="windows11o.img"
-        iso_link="https://dw.uptodown.net/dwn/sOdSQjwMIUmj5fJuDYtFZQykF-erAvyGWS92Ef6EgaMNuSJTYs1ha2oTcJBLsiLiru26J7YTZf4VIhK1uVdeo9sVdhOG9C5AfcNMZrn6V0xI4HfRd6Nj81Nld5Xo13Ic/tvlEdYez7K_0BB5CZbxfIqKyzziZVY7Uh8bdHQNCRzxYMtwxlSaQR0KUn_C_0JALfbryS5jJtdDiVJ19ULmOxe5J1V8G0cS3ED24xCoMGNJEtqiszeFRLLZiIMrwUjsN/tRyauoVxeG4LQwOT6ubUtQGNdxKBzCuVUa_EPLGvNxde7ESegdFBvCiq4Cj4xpM36N6qgd7-T90FPbC5AoJL4g==/windows-11-23h2.iso"
+        iso_link="https://dl.bobpony.com/windows/11/en-us_windows_11_22h2_x64.iso"
         iso_file="windows11o.iso"
         ;;
     14)
