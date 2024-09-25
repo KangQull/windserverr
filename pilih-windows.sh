@@ -127,7 +127,7 @@ case $choice in
     15)
         # Windows X 11p
         img_file="windows11x.img"
-        iso_link="https://ul4frq.bn.files.1drv.com/y4mb-YTRfdwaH9BCI2nJ1E1X4qh0kj700oWVD8dAltRYcYtpBL2cch6d4oVBEwgA2jifB3EwfzPx9i6B47LR-9mwEQeQYqNUIQWhuXAou0pyXSKjjpTAvc9WUTmPsnWQn9JMsG1zrBMQY9DjmKf-jAhv4whgHaOONdQHYQm88mvj4VoXFYxYAGADHajUzQbsAgmrr8kYoQo6aZ6JwW7sO_WTw"
+        iso_link="https://ul4frq.bn.files.1drv.com/y4mCMlSsbkgzISJicgpavg0y0JpGN13D2gWtp8n4QwTsPsIv_AexflFpsn0atKz4LVeYNFfqP-L-m41hiJTTPuW19TMTk06omHpfLxy0lYc0WkF_auorkDGIyo8_ovQsgn2cNH90lHgOWH6KQEt_pMPR3YEVHnhThafYog_vof8J6FCMTbFwjo2DDG_klW_XdljHu4aE6W9qC69BAT3gvZeLA"
         iso_file="windows11x.iso"
         ;;
     16)
