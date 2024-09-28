@@ -8,7 +8,7 @@ display_menu() {
     echo "3. Windows Server 2022"
     echo "4. Windows Server 2016"
     echo "5. Ubuntu 20.04 LTS"
-    echo "6. Windows Server 11 spectre"
+    echo "6. Windows Server 11 ltsc"
     echo "7. Windows Server 2025"
     echo "8. Windows Server 12 R2"
     echo "9. Windows 8.1"
@@ -72,9 +72,9 @@ case $choice in
         ;;
     6)
         # Windows Server 11
-        img_file="windows11.img"
-        iso_link="https://hurwtg.bn.files.1drv.com/y4mTEP_uQ46DejA7zpa6_hKyqscouzJBnBIiaHN4SYq9Glsjq8TIdty2JCrojobEhKLEtY7yGwO-rWe8sXQoabsxIfb6oDeDd6Bwq0e_M46HATz12CiXGcFf5ILfMdTBuTnxtL25Var4haquCTUJo8yLOr6b_9lPogARqSua8rgGC3YvrhaEvmaZsR2s-xkymeHxoWFGntzIZCOYZh2X9At8w"
-        iso_file="windows11.iso"
+        img_file="windows11lt.img"
+        iso_link="http://etdotz.my.id/windows/windows11ltsc.ARM6.iso"
+        iso_file="windows11lt.iso"
         ;;
     7)
         # Windows Server 2025
