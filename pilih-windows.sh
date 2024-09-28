@@ -18,7 +18,7 @@ display_menu() {
     echo "13. Windows 11 ori"
     echo "14. Windows X 10p"
     echo "15. Windows X 11p"
-    echo "16. Windows 10 GSpectre"
+    echo "16. Windows 10 ori"
     echo "17. Windows XP"
     echo "18. Windows VISTA"
     read -p "Enter your choice: " choice
@@ -131,10 +131,10 @@ case $choice in
         iso_file="windows11x.iso"
         ;;
     16)
-        # Windows 10 Gspectre
-        img_file="windows10g.img"
-        iso_link="https://huomoa.bn.files.1drv.com/y4mtGBM-s1PbBztI5PmktheWzxjlRI7fOu3zQMgzkjgc3lCKFy565T9Za_XoMVvhxx0sdZf2NtXAaLotyNmHLun6mCpYDJtTlpx2UjOvENJUvABujulL1JeExfPy0Cowgdo-d09ql__xa-dq6YHmxWPVTyR317c3SxUiTUeZR2CaLL8pAZcN9ZLoNKjRcdjpQvodqWLN3mPlbv1jIOWrIFT_g"
-        iso_file="windows10g.iso"
+        # Windows 10 ori
+        img_file="windows10.img"
+        iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=2787af5d-02bc-47a5-8760-d65be12a408c&P1=1727647913&P2=601&P3=2&P4=GzgM9u8cQwOV7YDJPSPQneYEqOixPFP26N%2fl0NIewr56GC%2b%2fpQZktg7zsFqPjpuVlFzZ6kvI5jwFeVurGwPraBiSp4gNtUbs2DRF8dXivo2S4xw%2bAgSNpbC3M3pahWrxHtnHHAdVadl94zyYNnb5u%2bBfh%2budjz84aVLXgIUYS9l0kOf%2b6O3i8aJ%2btiTpgrm%2fbmzuybsbxeq2GPlttfPUipiPwbpYC1dunjEF3NOo8CDzx5VB7dg0HzI0%2b7L5aOyAa1D0L56upiZ8Q8J2nZ2%2brsHrT9J6VTpOfQ2GKGyThHTSmn09hJOcUH6B0h4PsTqp3B%2fu06jXiJ4Xif1RGCN8GA%3d%3d"
+        iso_file="windows10.iso"
         ;;
     17)
         # Windows XP
