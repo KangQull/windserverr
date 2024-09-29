@@ -133,7 +133,7 @@ case $choice in
     16)
         # Windows 10 ori
         img_file="windows10.img"
-        iso_link="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=2787af5d-02bc-47a5-8760-d65be12a408c&P1=1727647913&P2=601&P3=2&P4=GzgM9u8cQwOV7YDJPSPQneYEqOixPFP26N%2fl0NIewr56GC%2b%2fpQZktg7zsFqPjpuVlFzZ6kvI5jwFeVurGwPraBiSp4gNtUbs2DRF8dXivo2S4xw%2bAgSNpbC3M3pahWrxHtnHHAdVadl94zyYNnb5u%2bBfh%2budjz84aVLXgIUYS9l0kOf%2b6O3i8aJ%2btiTpgrm%2fbmzuybsbxeq2GPlttfPUipiPwbpYC1dunjEF3NOo8CDzx5VB7dg0HzI0%2b7L5aOyAa1D0L56upiZ8Q8J2nZ2%2brsHrT9J6VTpOfQ2GKGyThHTSmn09hJOcUH6B0h4PsTqp3B%2fu06jXiJ4Xif1RGCN8GA%3d%3d"
+        iso_link="https://download1588.mediafire.com/9vmnxh8vgzigLsZtj-UvELcaUyfXxOpjDKqkvbt8IcxoEDywB-vkV0NthABWwtJroQ5lMYeNn-YGEPbSWwP2FUebcz7OGoHLCVPG6WPYjlgnuP6m-Jhtig0qD1344C7Sy3z9MK9CgQvWe3PZnf1GxMZ9UNzlcdmu-URTVIMZ7Kxt/b5qtflbmlk2xgtt/Windows.10.Pro.22H2.19045.4894.x64.September.2024.r3ndy.com.iso"
         iso_file="windows10.iso"
         ;;
     17)
