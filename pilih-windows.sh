@@ -133,7 +133,7 @@ case $choice in
     16)
         # Windows 10 ori
         img_file="windows10.img"
-        iso_link="https://download1588.mediafire.com/9vmnxh8vgzigLsZtj-UvELcaUyfXxOpjDKqkvbt8IcxoEDywB-vkV0NthABWwtJroQ5lMYeNn-YGEPbSWwP2FUebcz7OGoHLCVPG6WPYjlgnuP6m-Jhtig0qD1344C7Sy3z9MK9CgQvWe3PZnf1GxMZ9UNzlcdmu-URTVIMZ7Kxt/b5qtflbmlk2xgtt/Windows.10.Pro.22H2.19045.4894.x64.September.2024.r3ndy.com.iso"
+        iso_link="http://164.92.173.109/Win/WIN10.PRO.AIO.U19.X64.(WPE).ISO"
         iso_file="windows10.iso"
         ;;
     17)
