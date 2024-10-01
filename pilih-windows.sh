@@ -115,7 +115,7 @@ case $choice in
     13)
         # Windows 11 Ori
         img_file="windows11o.img"
-        iso_link="https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_x64.iso"
+        iso_link="http://164.92.173.109/Win/en_windows_11_x64_2.iso"
         iso_file="windows11o.iso"
         ;;
     14)
