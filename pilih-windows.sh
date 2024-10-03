@@ -21,6 +21,8 @@ display_menu() {
     echo "16. Windows 10 ori"
     echo "17. Windows XP"
     echo "18. Windows VISTA"
+    exho "19. Windows 11 neon by Xlite"
+    echo "20. Windows 11 pro by Xlite"
     read -p "Enter your choice: " choice
 }
 
@@ -147,6 +149,18 @@ case $choice in
         img_file="windowsv.img"
         iso_link="https://9e7ceg.bn.files.1drv.com/y4mVw2srZ5Y-KtBnsG_JIQ7hcLHZFTaD7DSbEcL5fke3Mc55YRJr-AuVNkTTrtYOTT6ABhZN5egNmj-yQFnY20rGQJVAMsG2eOllWO5I0OMOy6IXE2lkqx0BXMi4IuKSF_AK34eGUakug0oCbwd2-6QOqAa-Ns9_7gssN3Z6qHs3vKOcoAYzbFdrBIUyHWYBEC_HHgAxiL_xnKxQKxQFOJeOQ"
         iso_file="windowsv.iso"
+        ;;
+    19)
+        # Windows 11 Neon By Xlite
+        img_file="windows11n.img"
+        iso_link="http://164.92.173.109/Win/Win11xNeon.iso"
+        iso_file="windows11n.iso"
+        ;;
+    20)
+        # Windows 11 pro by Xlite
+        img_file="windows11p.img"
+        iso_link="http://164.92.173.109/Win/Win11xPRO.iso"
+        iso_file="windows11p.iso"
         ;;
     *)
         echo "Invalid choice. Exiting."
