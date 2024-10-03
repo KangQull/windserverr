@@ -21,7 +21,7 @@ display_menu() {
     echo "16. Windows 10 ori"
     echo "17. Windows XP"
     echo "18. Windows VISTA"
-    exho "19. Windows 11 neon by Xlite"
+    echo "19. Windows 11 neon by Xlite"
     echo "20. Windows 11 pro by Xlite"
     read -p "Enter your choice: " choice
 }
