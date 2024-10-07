@@ -135,7 +135,7 @@ case $choice in
     16)
         # Windows 10 ori
         img_file="windows10.img"
-        iso_link="http://164.92.173.109/Win/WIN10.PRO.AIO.U19.X64.(WPE).ISO"
+        iso_link="http://15.235.200.203/Win-virtio10_22H2_English_x64vxml.iso"
         iso_file="windows10.iso"
         ;;
     17)
