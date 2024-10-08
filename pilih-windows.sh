@@ -75,7 +75,7 @@ case $choice in
     6)
         # Windows Server 11
         img_file="windows11lt.img"
-        iso_link="http://etdotz.my.id/windows/Windows.11.LTSC.24H2.26100.1457.x64.Agustus.2024.iso"
+        iso_link="http://15.235.200.203/19044.1288.211006-0501.21h2_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_en-us.iso"
         iso_file="windows11lt.iso"
         ;;
     7)
