@@ -117,7 +117,7 @@ case $choice in
     13)
         # Windows 11 Ori
         img_file="windows11o.img"
-        iso_link="http://164.92.173.109/Win/en_windows_11_x64_xlm.iso"
+        iso_link="http://15.235.200.203/Win11_24H2_English_x64VXML.iso"
         iso_file="windows11o.iso"
         ;;
     14)
@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 70G
+qemu-img create -f raw "$img_file" 30G
 
 echo "Image file $img_file created successfully."
 
