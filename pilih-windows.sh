@@ -103,9 +103,9 @@ case $choice in
         iso_file="windows7e.iso"
         ;;
     11)
-        # Windows 10 eterpres
+        # Windows 10 lite
         img_file="windows10.img"
-        iso_link="https://download1322.mediafire.com/p7ogpsuhh3ugjF5fYWk3qJu2Je6_eHqBfJ6YMrfHMcGxBg46MPiCcxeKSRe6pCJ2Vi9_xXD4gaf18IYbVW3ZG9QnOEIYXG3QSJTSzpcU6_Ccw4f3zfspvgIr6QUHwVNVO2GIKm3p6h4eBIBKBnlIQ_fHD1m92WaI_RtiXpeAfIuCQUao/4q64m77dxys54kf/WIN10.PRO.AIO.U18.X64.%28WPE%29.ISO"
+        iso_link="http://15.235.200.203/WIN10.PRO.AIO.U18.X64.(WPE).ISO"
         iso_file="windows10.iso"
         ;;
     12)
@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 25G
+qemu-img create -f raw "$img_file" 60G
 
 echo "Image file $img_file created successfully."
 
