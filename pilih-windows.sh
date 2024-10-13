@@ -135,7 +135,7 @@ case $choice in
     16)
         # Windows 10 ori
         img_file="windows10.img"
-        iso_link="http://15.235.200.203/Win10_22H2_English_x64v1.iso"
+        iso_link="http://15.235.200.203/revi10.iso"
         iso_file="windows10.iso"
         ;;
     17)
@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 20G
+qemu-img create -f raw "$img_file" 16G
 
 echo "Image file $img_file created successfully."
 
