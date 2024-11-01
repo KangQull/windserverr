@@ -63,7 +63,7 @@ case $choice in
     4)
         # Windows Server 2016
         img_file="windows16.img"
-        iso_link="http://15.235.200.203/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.iso"
+        iso_link="https://go.microsoft.com/fwlink/p/?linkid=2195684&clcid=0x409&culture=en-us&country=us"
         iso_file="windows16.iso"
         ;;
     5)
@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 16G
+qemu-img create -f raw "$img_file" 20G
 
 echo "Image file $img_file created successfully."
 
