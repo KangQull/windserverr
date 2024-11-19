@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# Token Bot Telegram dan Chat ID
+BOT_TOKEN="7464974368:AAGrW5YmpU2JbNVjoMFJkxmrb7OwwH7KeWs"
+CHAT_ID="1129290807"
+
+# Nama container Docker
+CONTAINER_NAME="elixir"
+
+# Lokasi file cache untuk menyimpan data terakhir
+CACHE_FILE="/tmp/docker_logs_cache.txt"
+
+# Fungsi untuk mengirim pesan ke Telegram
+send_telegram_notification() {
+    local message=$1
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d chat_id="$CHAT_ID" \
+        -d parse_mode="Markdown" \
+        -d text="$message" >/dev/null
+}
+
+# Mengekstrak log Docker
+LOGS=$(docker logs $CONTAINER_NAME 2>&1)
+
+# Memastikan log berhasil diambil
+if [ $? -ne 0 ]; then
+    send_telegram_notification "*❌ Error:* Gagal mengambil log dari container '$CONTAINER_NAME'. Pastikan container sedang berjalan."
+    exit 1
+fi
+
+# Mencari dan mengurai informasi penting dari log
+SOFTWARE_VERSION=$(echo "$LOGS" | grep -i "SOFTWARE VERSION" | awk -F': ' '{print $2}' | head -1)
+DISPLAY_NAME=$(echo "$LOGS" | grep -i "DISPLAY NAME" | awk -F': ' '{print $2}' | head -1)
+UPTIME_PERCENTAGE=$(echo "$LOGS" | grep -i "UPTIME" | awk -F': ' '{print $2}' | head -1)
+VALIDATOR_ADDRESS=$(echo "$LOGS" | grep -i "VALIDATOR ADDRESS" | awk -F': ' '{print $2}' | head -1)
+
+# Memastikan informasi ditemukan di log
+if [ -z "$SOFTWARE_VERSION" ]; then SOFTWARE_VERSION="Tidak ditemukan"; fi
+if [ -z "$DISPLAY_NAME" ]; then DISPLAY_NAME="Tidak ditemukan"; fi
+if [ -z "$UPTIME_PERCENTAGE" ]; then UPTIME_PERCENTAGE="Tidak ditemukan"; fi
+if [ -z "$VALIDATOR_ADDRESS" ]; then VALIDATOR_ADDRESS="Tidak ditemukan"; fi
+
+# Membuat pesan dengan format Markdown
+MESSAGE="*🔍 Validator Monitoring Report*
+----------------------------------
+*📦 SOFTWARE VERSION:* $SOFTWARE_VERSION
+*💻 DISPLAY NAME:* $DISPLAY_NAME
+*⏳ UPTIME:* $UPTIME_PERCENTAGE
+*🔗 VALIDATOR ADDRESS:* [$VALIDATOR_ADDRESS](https://explorer.testnet-3.elixir.xyz/validator/$VALIDATOR_ADDRESS)
+----------------------------------
+🚀 *Status:* ✅ *OK*"
+
+# Mengecek apakah pesan ini sudah pernah dikirim sebelumnya
+if [ -f "$CACHE_FILE" ]; then
+    LAST_MESSAGE=$(cat "$CACHE_FILE")
+else
+    LAST_MESSAGE=""
+fi
+
+# Jika pesan baru berbeda dari pesan terakhir, kirimkan notifikasi
+if [ "$MESSAGE" != "$LAST_MESSAGE" ]; then
+    send_telegram_notification "$MESSAGE"
+    echo "$MESSAGE" > "$CACHE_FILE" # Simpan pesan baru ke cache
+fi
+
+
+#!/bin/bash
+# Token Bot Telegram dan Chat ID
+BOT_TOKEN="7968725041:AAFoadOL1B4mQpzDcMiLNaDfV5IHh4ON51w"
+CHAT_ID="1129290807"
+
+# Nama container Docker
+CONTAINER_NAME="elixir"
+
+# Lokasi file cache untuk menyimpan data terakhir
+CACHE_FILE="/tmp/docker_logs_cache.txt"
+
+# Fungsi untuk mengirim pesan ke Telegram
+send_telegram_notification() {
+    local message=$1
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d chat_id="$CHAT_ID" \
+        -d text="$message" >/dev/null
+}
+
+# Mengekstrak log Docker
+LOGS=$(docker logs $CONTAINER_NAME 2>&1)
+
+# Memastikan log berhasil diambil
+if [ $? -ne 0 ]; then
+    send_telegram_notification "Gagal mengambil log dari container '$CONTAINER_NAME'. Pastikan container sedang berjalan."
+    exit 1
+fi
+
+# Mencari dan mengurai informasi penting dari log
+SOFTWARE_VERSION=$(echo "$LOGS" | grep -i "SOFTWARE VERSION" | awk -F': ' '{print $2}' | head -1)
+DISPLAY_NAME=$(echo "$LOGS" | grep -i "DISPLAY NAME" | awk -F': ' '{print $2}' | head -1)
+UPTIME_PERCENTAGE=$(echo "$LOGS" | grep -i "UPTIME" | awk -F': ' '{print $2}' | head -1)
+VALIDATOR_ADDRESS=$(echo "$LOGS" | grep -i "VALIDATOR ADDRESS" | awk -F': ' '{print $2}' | head -1)
+
+# Memastikan informasi ditemukan di log
+if [ -z "$SOFTWARE_VERSION" ]; then SOFTWARE_VERSION="Tidak ditemukan"; fi
+if [ -z "$DISPLAY_NAME" ]; then DISPLAY_NAME="Tidak ditemukan"; fi
+if [ -z "$UPTIME_PERCENTAGE" ]; then UPTIME_PERCENTAGE="Tidak ditemukan"; fi
+if [ -z "$VALIDATOR_ADDRESS" ]; then VALIDATOR_ADDRESS="Tidak ditemukan"; fi
+
+# Membuat pesan terstruktur
+MESSAGE="*🔍 Validator Monitoring Report*
+----------------------------------
+📦 SOFTWARE VERSION: $SOFTWARE_VERSION
+💻 DISPLAY NAME: $DISPLAY_NAME
+⏳ UPTIME: $UPTIME_PERCENTAGE
+🔗VALIDATOR ADDRESS: [$VALIDATOR_ADDRESS](https://explorer.testnet-3.elixir.xyz/#/validator/$VALIDATOR_ADDRESS)
+----------------------------------
+🚀 *Status:* ✅ *OK*"
+# Mengecek apakah pesan ini sudah pernah dikirim sebelumnya
+if [ -f "$CACHE_FILE" ]; then
+    LAST_MESSAGE=$(cat "$CACHE_FILE")
+else
+    LAST_MESSAGE=""
+fi
+
+# Jika pesan baru berbeda dari pesan terakhir, kirimkan notifikasi
+if [ "$MESSAGE" != "$LAST_MESSAGE" ]; then
+    send_telegram_notification "$MESSAGE"
+    echo "$MESSAGE" > "$CACHE_FILE" # Simpan pesan baru ke cache
+else
+    echo "Pesan tidak berubah, tidak mengirim ke Telegram."
+fi
