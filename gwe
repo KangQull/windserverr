@@ -26,21 +26,20 @@ fi
 
 # Mencari dan mengurai informasi penting dari log
 SOFTWARE_VERSION=$(echo "$LOGS" | grep -i "SOFTWARE VERSION" | awk -F': ' '{print $2}')
-BROKER=$(echo "$LOGS" | grep -i "BROKER" | awk -F': ' '{print $2}')
-API_URL=$(echo "$LOGS" | grep -i "API URL" | awk -F': ' '{print $2}')
 DISPLAY_NAME=$(echo "$LOGS" | grep -i "DISPLAY NAME" | awk -F': ' '{print $2}')
-BENEFICIARY=$(echo "$LOGS" | grep -i "BENEFICIARY" | awk -F': ' '{print $2}')
-VALIDATOR_ADDRESS=$(echo "$LOGS" | grep -i "VALIDATOR ADDRESS" | awk -F': ' '{print $2}')
+
+# Mendapatkan uptime container
+UPTIME=$(docker ps --filter "name=$CONTAINER_NAME" --format "{{.RunningFor}}" 2>/dev/null)
+if [ -z "$UPTIME" ]; then
+    UPTIME="Container tidak berjalan"
+fi
 
 # Membuat pesan terstruktur
-MESSAGE="Log container '$CONTAINER_NAME' berhasil diambil:
+MESSAGE="Log container '$CONTAINER_NAME':
 
-SOFTWARE VERSION: $SOFTWARE_VERSION
-BROKER: $BROKER
-API URL: $API_URL
-DISPLAY NAME: $DISPLAY_NAME
-BENEFICIARY: $BENEFICIARY
-VALIDATOR ADDRESS: $VALIDATOR_ADDRESS
+* SOFTWARE VERSION: $SOFTWARE_VERSION
+* DISPLAY NAME: $DISPLAY_NAME
+* UPTIME: $UPTIME
 "
 
 # Mengirim pesan ke Telegram
