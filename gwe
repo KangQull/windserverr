@@ -16,18 +16,32 @@ send_telegram_notification() {
 }
 
 # Mengekstrak log Docker
-echo "Mengambil log Docker dari container '$CONTAINER_NAME'..."
 LOGS=$(docker logs $CONTAINER_NAME 2>&1)
 
 # Memastikan log berhasil diambil
-if [ $? -eq 0 ]; then
-    # Jika log terlalu panjang, potong pesan
-    if [ ${#LOGS} -gt 4000 ]; then
-        LOGS="${LOGS:0:4000}... (Log terpotong)"
-    fi
-    
-    send_telegram_notification "Log dari container '$CONTAINER_NAME':"
-    send_telegram_notification "$LOGS"
-else
+if [ $? -ne 0 ]; then
     send_telegram_notification "Gagal mengambil log dari container '$CONTAINER_NAME'. Pastikan container sedang berjalan."
+    exit 1
 fi
+
+# Mencari dan mengurai informasi penting dari log
+SOFTWARE_VERSION=$(echo "$LOGS" | grep -i "SOFTWARE VERSION" | awk -F': ' '{print $2}')
+BROKER=$(echo "$LOGS" | grep -i "BROKER" | awk -F': ' '{print $2}')
+API_URL=$(echo "$LOGS" | grep -i "API URL" | awk -F': ' '{print $2}')
+DISPLAY_NAME=$(echo "$LOGS" | grep -i "DISPLAY NAME" | awk -F': ' '{print $2}')
+BENEFICIARY=$(echo "$LOGS" | grep -i "BENEFICIARY" | awk -F': ' '{print $2}')
+VALIDATOR_ADDRESS=$(echo "$LOGS" | grep -i "VALIDATOR ADDRESS" | awk -F': ' '{print $2}')
+
+# Membuat pesan terstruktur
+MESSAGE="Log container '$CONTAINER_NAME' berhasil diambil:
+
+SOFTWARE VERSION: $SOFTWARE_VERSION
+BROKER: $BROKER
+API URL: $API_URL
+DISPLAY NAME: $DISPLAY_NAME
+BENEFICIARY: $BENEFICIARY
+VALIDATOR ADDRESS: $VALIDATOR_ADDRESS
+"
+
+# Mengirim pesan ke Telegram
+send_telegram_notification "$MESSAGE"
