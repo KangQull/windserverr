@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Token Bot Telegram dan Chat ID
+BOT_TOKEN="8070723836:AAHVkiRTr6ic7QzZE4lzPL6JJXLIskCpzeY"
+CHAT_ID="1129290807"
+
+# Fungsi untuk mengirim pesan ke Telegram
+send_telegram_notification() {
+    local message=$1
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d chat_id="$CHAT_ID" \
+        -d text="$message" >/dev/null
+}
+
+# Mengirim notifikasi awal
+send_telegram_notification "Memperbarui versi Elixir tesnet pada $(date)."
+
+docker kill elixir && docker rm elixir
+docker pull elixirprotocol/validator:testnet-3 --platform linux/amd64
+docker run -d --env-file ./validator.env --platform linux/amd64 --name elixir --restart unless-stopped -p 17690:17690 elixirprotocol/validator:testnet-3
+if [ $? -eq 0 ]; then
+    send_telegram_notification "Container elixir berhasil dijalankan."
+else
+    send_telegram_notification "Gagal menjalankan container elixir."
+    exit 1
+fi
+
+# Mengirim notifikasi selesai
+send_telegram_notification "Versi Elixir tesnet sudah terbaru pada $(date)."
