@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Token Bot Telegram dan Chat ID
+BOT_TOKEN="7968725041:AAFoadOL1B4mQpzDcMiLNaDfV5IHh4ON51w"
+CHAT_ID="1129290807"
+
+# Nama container Docker
+CONTAINER_NAME="elixir"
+
+# Fungsi untuk mengirim pesan ke Telegram
+send_telegram_notification() {
+    local message=$1
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d chat_id="$CHAT_ID" \
+        -d text="$message" >/dev/null
+}
+
+# Fungsi untuk mengirim file log ke Telegram
+send_telegram_file() {
+    local file_path=$1
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendDocument" \
+        -F chat_id="$CHAT_ID" \
+        -F document=@"$file_path" >/dev/null
+}
+
+# Mengekstrak log Docker
+LOG_FILE="/tmp/${CONTAINER_NAME}_logs.txt"
+docker logs $CONTAINER_NAME > $LOG_FILE 2>&1
+if [ $? -eq 0 ]; then
+    send_telegram_notification "Log container '$CONTAINER_NAME' berhasil diambil. Mengirim log ke Telegram..."
+    send_telegram_file "$LOG_FILE"
+    send_telegram_notification "Log container '$CONTAINER_NAME' telah dikirim."
+else
+    send_telegram_notification "Gagal mengambil log untuk container '$CONTAINER_NAME'. Pastikan container sedang berjalan."
+fi
+
+# Hapus file log sementara
+rm -f "$LOG_FILE"
