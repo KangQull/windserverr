@@ -1,0 +1,153 @@
+#!/bin/bash
+NEXTCLOUD_DIR="/var/www/html"
+# Direktori penyimpanan backup
+BACKUP_DIR="/var/backups/nextcloud"
+BACKUPDIR="/var/backups/"
+# File konfigurasi Nextcloud
+CONFIG_FILE="$NEXTCLOUD_DIR/config/config.php"
+# Tanggal backup
+DATE=$(date +%Y%m%d_%H%M%S)
+
+# Membuat direktori backup jika belum ada
+mkdir -p $BACKUP_DIR
+
+# Pastikan s3cmd terinstal
+if ! command -v s3cmd &> /dev/null; then
+  echo "s3cmd belum terinstal. Menginstal s3cmd..."
+  apt update && apt install -y s3cmd
+fi
+
+# Minta input dari pengguna untuk beberapa parameter
+read -p "Masukkan Access Key Anda: " ACCESS_KEY
+read -p "Masukkan Secret Key Anda: " SECRET_KEY
+read -p "Masukkan Bucket Default Location (contoh: SG): " BUCKET_LOCATION
+read -p "Masukkan Nama Bucket: " NAME_BUCKET
+read -p "Masukkan Host Base (contoh: sgp1.digitaloceanspaces.com): " HOST_BASE
+
+# Konfirmasi lokasi file output
+read -p "Masukkan lokasi untuk menyimpan .s3cfg (tekan enter untuk ~/.s3cfg): " CONFIG_FILE
+CONFIG_FILE=${CONFIG_FILE:-~/.s3cfg}
+
+# Membuat file .s3cfg
+cat > "$CONFIG_FILE" <<EOL
+[default]
+access_key = $ACCESS_KEY
+access_token =
+add_encoding_exts =
+add_headers =
+bucket_location = $BUCKET_LOCATION
+ca_certs_file =
+cache_file =
+check_ssl_certificate = True
+check_ssl_hostname = True
+cloudfront_host = cloudfront.amazonaws.com
+content_disposition =
+content_type =
+default_mime_type = binary/octet-stream
+delay_updates = False
+delete_after = False
+delete_after_fetch = False
+delete_removed = False
+dry_run = False
+enable_multipart = True
+encoding = UTF-8
+encrypt = False
+expiry_date =
+expiry_days =
+expiry_prefix =
+follow_symlinks = False
+force = False
+get_continue = False
+gpg_command = /usr/bin/gpg
+gpg_decrypt = %(gpg_command)s -d --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s
+gpg_encrypt = %(gpg_command)s -c --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s
+gpg_passphrase =
+guess_mime_type = True
+host_base = $HOST_BASE
+host_bucket = %(bucket)s.$HOST_BASE
+human_readable_sizes = False
+invalidate_default_index_on_cf = False
+invalidate_default_index_root_on_cf = True
+invalidate_on_cf = False
+kms_key =
+limit = -1
+limitrate = 0
+list_md5 = False
+log_target_prefix =
+long_listing = False
+max_delete = -1
+mime_type =
+multipart_chunk_size_mb = 15
+multipart_max_chunks = 10000
+preserve_attrs = True
+progress_meter = True
+proxy_host =
+proxy_port = 0
+put_continue = False
+recursive = False
+recv_chunk = 65536
+reduced_redundancy = False
+requester_pays = False
+restore_days = 1
+restore_priority = Standard
+secret_key = $SECRET_KEY
+send_chunk = 65536
+server_side_encryption = False
+signature_v2 = False
+signurl_use_https = False
+simpledb_host = sdb.amazonaws.com
+skip_existing = False
+socket_timeout = 300
+stats = False
+stop_on_error = False
+storage_class =
+throttle_max = 100
+upload_id =
+urlencoding_mode = normal
+use_http_expect = False
+use_https = True
+use_mime_magic = True
+verbosity = WARNING
+website_endpoint = http://%(bucket)s.s3-website-%(location)s.amazonaws.com/
+website_error =
+website_index = index.html
+EOL
+
+# Fungsi untuk membaca parameter dari file konfigurasi
+get_config_value() {
+    local key=$1
+    local value=$(grep "'$key'" $CONFIG_FILE | awk -F "=> " '{print $2}' | tr -d "', ")
+    echo $value
+}
+
+# Membaca informasi database dari config.php
+DB_NAME=$(get_config_value "dbname")
+DB_USER=$(get_config_value "dbuser")
+DB_PASS=$(get_config_value "dbpassword")
+cat <<EOF > "$HOME/.my.cnf"
+[client]
+user=$DB_USER
+password=$DB_PASS
+EOF
+# Pastikan semua parameter ditemukan
+if [[ -z "$DB_NAME" || -z "$DB_USER" || -z "$DB_PASS" ]]; then
+    echo "Gagal membaca informasi database dari $CONFIG_FILE. Pastikan file konfigurasi valid."
+    exit 1
+fi
+
+echo "Mencadangkan file Nextcloud..."
+tar -czvf $BACKUP_DIR/nextcloud_files_$DATE.tar.gz -C /var/www/html .
+
+echo "Mencadangkan database Nextcloud..."
+mysql -u root -e "GRANT PROCESS ON *.* TO '$DB_USER'@'localhost';"
+mysql -u root -e "FLUSH PRIVILEGES;"
+mysql -u root -e "SHOW GRANTS FOR '$DB_USER'@'localhost';"
+mysqldump "$DB_NAME" > $BACKUP_DIR/nextcloud_db_$DATE.sql
+
+echo "Mencadangkan konfigurasi Apache..."
+cp /etc/apache2/sites-available/nextcloud.conf $BACKUP_DIR/nextcloud_apache_$DATE.conf
+
+# Unggah backup ke S3
+echo "Mengunggah backup ke S3..."
+s3cmd sync --recursive --preserve $BACKUPDIR s3://$NAME_BUCKET
+echo "Backup selesai! File backup disimpan S3cmd storage"
