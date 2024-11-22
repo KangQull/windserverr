@@ -63,16 +63,16 @@ mkdir -p $MOUNT_DIR/etc/cloud
 echo "Mendeteksi konfigurasi jaringan secara otomatis..."
 
 # Menggunakan `ip` untuk mendeteksi IP dan gateway (hanya IPv4)
-IP_ADDR=$(ip -4 addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
+IP4=$(curl -4 -s icanhazip.com)
 GATEWAY=$(ip route | grep default | awk '{print $3}')
 NETMASK=$(ifconfig eth0 | grep 'inet ' | awk '{print $4}' | cut -d':' -f2)
 
-if [ -z "$IP_ADDR" ] || [ -z "$GATEWAY" ] || [ -z "$NETMASK" ]; then
+if [ -z "$IP4" ] || [ -z "$GATEWAY" ] || [ -z "$NETMASK" ]; then
     echo "Error: Gagal mendeteksi IP, gateway, atau subnet mask. Pastikan jaringan berfungsi dengan baik."
     exit 1
 fi
 
-echo "IP: $IP_ADDR"
+echo "IP: $IP4"
 echo "Gateway: $GATEWAY"
 echo "Netmask: $NETMASK"
 
@@ -87,7 +87,7 @@ network:
       dhcp4: false
       dhcp6: false
       addresses:
-        - "$IP_ADDR/$NETMASK"
+        - "$IP4/$NETMASK"
       gateway4: "$GATEWAY"
       nameservers:
         addresses:
