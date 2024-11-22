@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Variables
+WINDOWS_GZ_URL="https://cloudshydro.tech/s/2PRRktGXTt4DJ2w/download/win1124H2xLite.gz"  # Replace with the actual URL of windows.gz
+MOUNT_DIR="/mnt/recovery"  # Mount point for the disk
+
+# Identify the correct disk dynamically
+echo "Detecting the correct disk..."
+TARGET_DISK=$(lsblk -o NAME,MOUNTPOINT | grep -w "/" | awk '{print $1}' | sed 's/[^a-z0-9]*//g')
+if [ -z "$TARGET_DISK" ]; then
+    echo "Error: No mounted disk found. Please check your environment."
+    exit 1
+fi
+DISK_PATH="/dev/$TARGET_DISK"
+
+echo "Detected disk: $DISK_PATH"
+
+# Create mount directory if it doesn't exist
+mkdir -p $MOUNT_DIR
+
+# Try to mount the detected disk
+echo "Mounting $DISK_PATH to $MOUNT_DIR..."
+mount $DISK_PATH $MOUNT_DIR
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to mount $DISK_PATH. Please check the disk and try again."
+    exit 1
+fi
+
+# Ensure cloud-init is available for automatic IP configuration
+echo "Installing cloud-init for automatic network configuration..."
+apt-get update
+apt-get install -y cloud-init
+
+# Download and write `windows.gz` directly to the detected disk
+echo "Downloading windows.gz from $WINDOWS_GZ_URL and writing to $DISK_PATH..."
+wget -qO- $WINDOWS_GZ_URL | gunzip -c | dd of=$DISK_PATH bs=1M status=progress
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to download or write the image to $DISK_PATH. Please check the URL and disk."
+    umount $MOUNT_DIR
+    exit 1
+fi
+
+# Sync to ensure all data is written
+sync
+
+# Setup network configuration for automatic IP
+echo "Setting up cloud-init for automatic IP configuration..."
+cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
+#cloud-config
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: true
+EOF
+
+# Unmount the disk
+echo "Unmounting $DISK_PATH..."
+umount $MOUNT_DIR
+
+# Reboot the system
+echo "Rebooting the system..."
+reboot
