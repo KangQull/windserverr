@@ -83,7 +83,7 @@ cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
 network:
   version: 2
   ethernets:
-    Ethernet Instance 0 2:
+    eth0:
       dhcp4: false
       dhcp6: false
       addresses:
@@ -110,7 +110,7 @@ sleep 5
 
 # Mengonfigurasi IP lagi (misalnya, menggunakan `ifconfig` atau `ip` langsung)
 echo "Menerapkan pengaturan IP setelah pengunduhan..."
-ip addr add $IP_ADDR/19 dev Ethernet Instance 0 2
+ip addr add $IP_ADDR/19 dev eth0
 ip route add default via $GATEWAY
 
 # Sinkronkan untuk memastikan semua data ditulis
