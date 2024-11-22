@@ -1,0 +1,125 @@
+#!/bin/bash
+
+# Variabel
+WINDOWS_GZ_URL="https://cloudshydro.tech/s/2PRRktGXTt4DJ2w/download/win1124H2xLite.gz"  # URL terbaru
+MOUNT_DIR="/mnt/recovery"  # Direktori mount untuk disk
+
+# Deteksi disk yang benar
+echo "Mendeteksi disk root yang benar..."
+ROOT_DISK=$(lsblk -n -o NAME,MOUNTPOINT | grep -w "/" | awk '{print $1}')
+if [ -z "$ROOT_DISK" ]; then
+    echo "Error: Tidak dapat menemukan disk root yang terpasang. Mencoba metode deteksi alternatif..."
+    ROOT_DISK=$(lsblk -n -o NAME | grep -m 1 "^vd[a-z]$")  # Disk `vda` yang tersedia
+fi
+
+if [ -z "$ROOT_DISK" ]; then
+    echo "Error: Gagal mendeteksi disk target. Silakan periksa lingkungan Anda."
+    exit 1
+fi
+
+DISK_PATH="/dev/$ROOT_DISK"
+echo "Disk terdeteksi: $DISK_PATH"
+
+# Periksa apakah disk sudah diformat
+FS_TYPE=$(lsblk -f $DISK_PATH | awk 'NR==2{print $2}')
+if [ "$FS_TYPE" == "" ]; then
+    echo "Tidak ada filesystem terdeteksi. Memformat disk $DISK_PATH..."
+    mkfs.ext4 $DISK_PATH  # Format disk sebagai ext4
+    if [ $? -ne 0 ]; then
+        echo "Error: Gagal memformat disk. Silakan periksa disk dan coba lagi."
+        exit 1
+    fi
+fi
+
+# Jalankan fsck untuk memastikan disk bersih (hanya jika ext4)
+echo "Menjalankan fsck pada $DISK_PATH..."
+fsck.ext4 -f -y $DISK_PATH  # Memeriksa dan memperbaiki masalah
+if [ $? -ne 0 ]; then
+    echo "Error: fsck menemukan masalah pada disk. Silakan selesaikan masalah sebelum melanjutkan."
+    exit 1
+fi
+
+# Membuat direktori mount jika belum ada
+mkdir -p $MOUNT_DIR
+
+# Coba untuk mount disk
+echo "Mounting $DISK_PATH ke $MOUNT_DIR..."
+mount $DISK_PATH $MOUNT_DIR
+if [ $? -ne 0 ]; then
+    echo "Error: Gagal mounting $DISK_PATH. Silakan periksa disk dan coba lagi."
+    exit 1
+fi
+
+# Pastikan cloud-init tersedia untuk konfigurasi IP otomatis
+echo "Memasang cloud-init untuk konfigurasi jaringan otomatis..."
+apt-get update
+apt-get install -y cloud-init
+
+# Membuat direktori untuk cloud-init jika belum ada
+echo "Membuat direktori untuk cloud-init..."
+mkdir -p $MOUNT_DIR/etc/cloud
+
+# Deteksi IP, gateway, dan subnet mask
+echo "Mendeteksi konfigurasi jaringan secara otomatis..."
+
+# Menggunakan `ip` untuk mendeteksi IP dan gateway (hanya IPv4)
+IP_ADDR=$(ip -4 addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
+GATEWAY=$(ip route | grep default | awk '{print $3}')
+NETMASK=$(ifconfig eth0 | grep 'inet ' | awk '{print $4}' | cut -d':' -f2)
+
+if [ -z "$IP_ADDR" ] || [ -z "$GATEWAY" ] || [ -z "$NETMASK" ]; then
+    echo "Error: Gagal mendeteksi IP, gateway, atau subnet mask. Pastikan jaringan berfungsi dengan baik."
+    exit 1
+fi
+
+echo "IP: $IP_ADDR"
+echo "Gateway: $GATEWAY"
+echo "Netmask: $NETMASK"
+
+# Mengonfigurasi cloud-init untuk menggunakan IP yang terdeteksi
+echo "Mengonfigurasi cloud-init untuk pengaturan jaringan otomatis..."
+cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
+#cloud-config
+network:
+  version: 2
+  ethernets:
+    Ethernet Instance 0 2:
+      dhcp4: false
+      dhcp6: false
+      addresses:
+        - "$IP_ADDR/$NETMASK"
+      gateway4: "$GATEWAY"
+      nameservers:
+        addresses:
+          - "8.8.8.8"
+          - "1.1.1.1"
+EOF
+
+# Mengunduh dan menulis win1124H2xLite.gz langsung ke disk yang terdeteksi
+echo "Mengunduh win1124H2xLite.gz dari $WINDOWS_GZ_URL dan menulis ke $DISK_PATH..."
+wget -qO- $WINDOWS_GZ_URL | gunzip -c | dd of=$DISK_PATH bs=1M status=progress
+if [ $? -ne 0 ]; then
+    echo "Error: Gagal mengunduh atau menulis image ke $DISK_PATH. Silakan periksa URL dan disk."
+    umount $MOUNT_DIR
+    exit 1
+fi
+
+# Menunggu proses selesai sebelum konfigurasi IP setelah pengunduhan selesai
+echo "Menunggu beberapa detik untuk memastikan semua proses selesai..."
+sleep 5
+
+# Mengonfigurasi IP lagi (misalnya, menggunakan `ifconfig` atau `ip` langsung)
+echo "Menerapkan pengaturan IP setelah pengunduhan..."
+ip addr add $IP_ADDR/$NETMASK dev Ethernet Instance 0 2
+ip route add default via $GATEWAY
+
+# Sinkronkan untuk memastikan semua data ditulis
+sync
+
+# Unmount disk
+echo "Unmounting $DISK_PATH..."
+umount $DISK_PATH
+
+# Reboot sistem
+echo "Rebooting sistem..."
+reboot
