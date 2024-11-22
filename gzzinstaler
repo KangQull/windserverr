@@ -55,6 +55,10 @@ echo "Memasang cloud-init untuk konfigurasi jaringan otomatis..."
 apt-get update
 apt-get install -y cloud-init
 
+# Membuat direktori untuk cloud-init jika belum ada
+echo "Membuat direktori untuk cloud-init..."
+mkdir -p $MOUNT_DIR/etc/cloud
+
 # Mengonfigurasi cloud-init untuk menggunakan DHCP pada interface yang benar (misalnya, eth0)
 echo "Mengonfigurasi cloud-init untuk pengaturan jaringan..."
 cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
@@ -85,4 +89,3 @@ umount $DISK_PATH
 
 # Reboot sistem
 echo "Rebooting sistem..."
-reboot
