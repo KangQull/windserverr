@@ -63,7 +63,7 @@ mkdir -p $MOUNT_DIR/etc/cloud
 echo "Mendeteksi konfigurasi jaringan secara otomatis..."
 
 # Menggunakan `ip` untuk mendeteksi IP dan gateway
-IP_ADDR=$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
+IP_ADDR=$(ip -4 addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)
 GATEWAY=$(ip route | grep default | awk '{print $3}')
 NETMASK=$(ifconfig eth0 | grep 'inet ' | awk '{print $4}' | cut -d':' -f2)
 
