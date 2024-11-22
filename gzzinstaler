@@ -1,63 +1,88 @@
 #!/bin/bash
 
-# Variables
-WINDOWS_GZ_URL="https://cloudshydro.tech/s/2PRRktGXTt4DJ2w/download/win1124H2xLite.gz"  # Replace with the actual URL of windows.gz
-MOUNT_DIR="/mnt/recovery"  # Mount point for the disk
+# Variabel
+WINDOWS_GZ_URL="https://cloudshydro.tech/s/2PRRktGXTt4DJ2w/download/win1124H2xLite.gz"  # URL terbaru
+MOUNT_DIR="/mnt/recovery"  # Direktori mount untuk disk
 
-# Identify the correct disk dynamically
-echo "Detecting the correct disk..."
-TARGET_DISK=$(lsblk -o NAME,MOUNTPOINT | grep -w "/" | awk '{print $1}' | sed 's/[^a-z0-9]*//g')
-if [ -z "$TARGET_DISK" ]; then
-    echo "Error: No mounted disk found. Please check your environment."
+# Deteksi disk yang benar
+echo "Mendeteksi disk root yang benar..."
+ROOT_DISK=$(lsblk -n -o NAME,MOUNTPOINT | grep -w "/" | awk '{print $1}')
+if [ -z "$ROOT_DISK" ]; then
+    echo "Error: Tidak dapat menemukan disk root yang terpasang. Mencoba metode deteksi alternatif..."
+    ROOT_DISK=$(lsblk -n -o NAME | grep -m 1 "^vd[a-z]$")  # Disk `vda` yang tersedia
+fi
+
+if [ -z "$ROOT_DISK" ]; then
+    echo "Error: Gagal mendeteksi disk target. Silakan periksa lingkungan Anda."
     exit 1
 fi
-DISK_PATH="/dev/$TARGET_DISK"
 
-echo "Detected disk: $DISK_PATH"
+DISK_PATH="/dev/$ROOT_DISK"
+echo "Disk terdeteksi: $DISK_PATH"
 
-# Create mount directory if it doesn't exist
+# Periksa apakah disk sudah diformat
+FS_TYPE=$(lsblk -f $DISK_PATH | awk 'NR==2{print $2}')
+if [ "$FS_TYPE" == "" ]; then
+    echo "Tidak ada filesystem terdeteksi. Memformat disk $DISK_PATH..."
+    mkfs.ext4 $DISK_PATH  # Format disk sebagai ext4
+    if [ $? -ne 0 ]; then
+        echo "Error: Gagal memformat disk. Silakan periksa disk dan coba lagi."
+        exit 1
+    fi
+fi
+
+# Jalankan fsck untuk memastikan disk bersih (hanya jika ext4)
+echo "Menjalankan fsck pada $DISK_PATH..."
+fsck.ext4 -f -y $DISK_PATH  # Memeriksa dan memperbaiki masalah
+if [ $? -ne 0 ]; then
+    echo "Error: fsck menemukan masalah pada disk. Silakan selesaikan masalah sebelum melanjutkan."
+    exit 1
+fi
+
+# Membuat direktori mount jika belum ada
 mkdir -p $MOUNT_DIR
 
-# Try to mount the detected disk
-echo "Mounting $DISK_PATH to $MOUNT_DIR..."
+# Coba untuk mount disk
+echo "Mounting $DISK_PATH ke $MOUNT_DIR..."
 mount $DISK_PATH $MOUNT_DIR
 if [ $? -ne 0 ]; then
-    echo "Error: Failed to mount $DISK_PATH. Please check the disk and try again."
+    echo "Error: Gagal mounting $DISK_PATH. Silakan periksa disk dan coba lagi."
     exit 1
 fi
 
-# Ensure cloud-init is available for automatic IP configuration
-echo "Installing cloud-init for automatic network configuration..."
+# Pastikan cloud-init tersedia untuk konfigurasi IP otomatis
+echo "Memasang cloud-init untuk konfigurasi jaringan otomatis..."
 apt-get update
 apt-get install -y cloud-init
 
-# Download and write `windows.gz` directly to the detected disk
-echo "Downloading windows.gz from $WINDOWS_GZ_URL and writing to $DISK_PATH..."
-wget -qO- $WINDOWS_GZ_URL | gunzip -c | dd of=$DISK_PATH bs=1M status=progress
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to download or write the image to $DISK_PATH. Please check the URL and disk."
-    umount $MOUNT_DIR
-    exit 1
-fi
-
-# Sync to ensure all data is written
-sync
-
-# Setup network configuration for automatic IP
-echo "Setting up cloud-init for automatic IP configuration..."
+# Mengonfigurasi cloud-init untuk menggunakan DHCP pada interface yang benar (misalnya, eth0)
+echo "Mengonfigurasi cloud-init untuk pengaturan jaringan..."
 cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
 #cloud-config
 network:
   version: 2
   ethernets:
-    eth0:
+    Ethernet Instance 0 2:  # Ganti 'eth0' dengan nama interface yang tepat
       dhcp4: true
+      dhcp6: false
 EOF
 
-# Unmount the disk
-echo "Unmounting $DISK_PATH..."
-umount $MOUNT_DIR
+# Mengunduh dan menulis win1124H2xLite.gz langsung ke disk yang terdeteksi
+echo "Mengunduh win1124H2xLite.gz dari $WINDOWS_GZ_URL dan menulis ke $DISK_PATH..."
+wget -qO- $WINDOWS_GZ_URL | gunzip -c | dd of=$DISK_PATH bs=1M status=progress
+if [ $? -ne 0 ]; then
+    echo "Error: Gagal mengunduh atau menulis image ke $DISK_PATH. Silakan periksa URL dan disk."
+    umount $MOUNT_DIR
+    exit 1
+fi
 
-# Reboot the system
-echo "Rebooting the system..."
+# Sinkronkan untuk memastikan semua data ditulis
+sync
+
+# Unmount disk
+echo "Unmounting $DISK_PATH..."
+umount $DISK_PATH
+
+# Reboot sistem
+echo "Rebooting sistem..."
 reboot
