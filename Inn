@@ -83,7 +83,7 @@ cat <<EOF > $MOUNT_DIR/etc/cloud/cloud.cfg
 network:
   version: 2
   ethernets:
-    eth0:
+    Ethernet Instance 0 2:
       dhcp4: false
       dhcp6: false
       addresses:
