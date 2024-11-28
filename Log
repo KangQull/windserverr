@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Pilihan login SSH
+PS3="Pilih server untuk login SSH: "
+
+# Menampilkan menu pilihan login
+select server in "Server 1 - 139.59.15.9" "Server 2 - 192.168.1.10" "Keluar"
+do
+    case $server in
+        "Server 1 - PipeNetwork Node")
+            echo "Login ke PipenNetwork node..."
+            sshpass -p "androiD@8k" ssh -o StrictHostKeyChecking=no root@134.209.148.40
+            break
+            ;;
+        "Server 2 - Blockmesh Node")
+            echo "Login ke Blockmesh node..."
+            sshpass -p "android888" ssh -o StrictHostKeyChecking=no root@170.64.219.138
+            break
+            ;;
+        "Server 3 - Elixir Node")
+            echo "Login ke Elixir node..."
+            sshpass -p "androiD@8k" ssh -o StrictHostKeyChecking=no root@206.189.83.117
+            break
+            ;;
+         "Server 4 - Origintrail Node")
+            echo "Login ke Origintrail node..."
+            sshpass -p "android888" ssh -o StrictHostKeyChecking=no root@167.71.205.129
+            break
+            ;;
+        "Keluar")
+            echo "Keluar dari skrip."
+            break
+            ;;
+        *)
+            echo "Pilihan tidak valid. Coba lagi."
+            ;;
+    esac
+done
