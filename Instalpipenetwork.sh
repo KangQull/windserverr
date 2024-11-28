@@ -1,6 +1,6 @@
 #!bin/bash
 read -p "Masukan Link Pipe tool Binary: " PIPE
-read -p "Masukan Link Node Binary:" BINARY
+read -p "Masukan Link Node Binary: " BINARY
 
 sudo mkdir -p /opt/dcdn
 
