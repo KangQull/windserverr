@@ -105,7 +105,7 @@ case $choice in
     11)
         # Windows 10 lite X
         img_file="windows10.img"
-        iso_link="https://cloudshydro.tech/s/5G94JfQZg2JbRnB/download/NEON10XLite.iso"
+        iso_link="https://cloudshydro.tech/s/2nMgJmFPHiEaXQf/download/WIN10GHOSTSPECTRE.ISO"
         iso_file="windows10.iso"
         ;;
     12)
