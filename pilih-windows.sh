@@ -13,7 +13,7 @@ display_menu() {
     echo "8. Windows Server 12 R2"
     echo "9. Windows 8.1"
     echo "10. Windows 7 exterpres"
-    echo "11. Windows 10 lite"
+    echo "11. Windows 10 lite X"
     echo "12. Windows 8 pro"
     echo "13. Windows 11 ori"
     echo "14. Windows X 10p"
@@ -103,9 +103,9 @@ case $choice in
         iso_file="windows7e.iso"
         ;;
     11)
-        # Windows 10 lite
+        # Windows 10 lite X
         img_file="windows10.img"
-        iso_link="http://15.235.200.203/WIN10.PRO.AIO.U18.X64.(WPE).ISO"
+        iso_link="https://cloudshydro.tech/s/5G94JfQZg2JbRnB/download/NEON10XLite.iso"
         iso_file="windows10.iso"
         ;;
     12)
