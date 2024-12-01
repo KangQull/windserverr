@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 46G
+qemu-img create -f raw "$img_file" 20G
 
 echo "Image file $img_file created successfully."
 
