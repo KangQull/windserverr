@@ -81,7 +81,7 @@ case $choice in
     7)
         # Windows Server 2025
         img_file="windows25.img"
-        iso_link="http://167.71.206.234/windows25.iso"
+        iso_link="https://go.microsoft.com/fwlink/?linkid=2293312&clcid=0x409&culture=en-us&country=us"
         iso_file="windows25.iso"
         ;;
     8)
@@ -171,7 +171,7 @@ esac
 echo "Selected Windows Server version: $img_file"
 
 # Create a raw image file with the chosen name
-qemu-img create -f raw "$img_file" 20G
+qemu-img create -f raw "$img_file" 25G
 
 echo "Image file $img_file created successfully."
 
